@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven", "EloHeaven\EloHeaven.csproj", "{2D413B9E-47E7-4F0C-A76F-4FEE76F1EC5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{9D784018-D229-462E-AEC8-40D5CFA9A019}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{DE8214CB-8C7B-450E-8DFF-307998877B12}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{1F0D50CB-0284-415A-95FF-64B624E69C9B}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\EloHeaven.json = PublishScripts\Templates\EloHeaven.json
+		PublishScripts\Templates\EloHeaven.param.dev.json = PublishScripts\Templates\EloHeaven.param.dev.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Logic", "EloHeaven.Logic\EloHeaven.Logic.csproj", "{26F73090-0650-4ADE-A77D-FFE44ED4B20D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Infrastructure", "EloHeaven.Infrastructure\EloHeaven.Infrastructure.csproj", "{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Services.Logic", "EloHeaven.Services.Logic\EloHeaven.Services.Logic.csproj", "{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D413B9E-47E7-4F0C-A76F-4FEE76F1EC5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D413B9E-47E7-4F0C-A76F-4FEE76F1EC5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D413B9E-47E7-4F0C-A76F-4FEE76F1EC5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D413B9E-47E7-4F0C-A76F-4FEE76F1EC5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F73090-0650-4ADE-A77D-FFE44ED4B20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F73090-0650-4ADE-A77D-FFE44ED4B20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F73090-0650-4ADE-A77D-FFE44ED4B20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F73090-0650-4ADE-A77D-FFE44ED4B20D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE8214CB-8C7B-450E-8DFF-307998877B12} = {9D784018-D229-462E-AEC8-40D5CFA9A019}
+		{1F0D50CB-0284-415A-95FF-64B624E69C9B} = {9D784018-D229-462E-AEC8-40D5CFA9A019}
+	EndGlobalSection
+EndGlobal
