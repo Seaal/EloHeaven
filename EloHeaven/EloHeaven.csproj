@@ -197,6 +197,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InhouseController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Filters\NotFoundExceptionFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1174,6 +1175,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EloHeaven.Infrastructure\EloHeaven.Infrastructure.csproj">
+      <Project>{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}</Project>
+      <Name>EloHeaven.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EloHeaven.Logic\EloHeaven.Logic.csproj">
       <Project>{26F73090-0650-4ADE-A77D-FFE44ED4B20D}</Project>
       <Name>EloHeaven.Logic</Name>

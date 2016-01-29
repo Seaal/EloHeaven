@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using EloHeaven.Filters;
 using Newtonsoft.Json.Serialization;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
@@ -25,6 +26,10 @@ namespace EloHeaven
 
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
+
+            //Exception Filters
+
+            config.Filters.Add(new NotFoundExceptionFilterAttribute());
         }
     }
 }

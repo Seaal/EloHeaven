@@ -47,8 +47,13 @@
                     vm.player.rank = player.rank;
                     vm.player.region = player.region;
                     vm.player.status = player.status;
-                }, function(error) {
-                    vm.errorMessage = error;
+                }, function (error) {
+                    if (error.status == 404) {
+                        vm.errorMessage = "Player could not be found.";
+                    } else {
+                        vm.errorMessage = "An error occurred. Please try again later.";
+                    }
+                    
                 });
             }
             
