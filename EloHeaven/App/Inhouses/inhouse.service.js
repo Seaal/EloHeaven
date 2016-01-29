@@ -13,7 +13,9 @@
         };
         
         function addPlayer(playerName) {
-            return $http.get("/api/inhouse/player/" + playerName);
+            return $http.get("/api/inhouse/player/" + playerName).then(function(response) {
+                return response.data;
+            });
         }
         
         function removePlayer(playerId) {
