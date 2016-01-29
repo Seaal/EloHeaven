@@ -14,9 +14,27 @@ namespace EloHeaven.Logic.Common
         {
             using (WebClient webClient = new WebClient())
             {
-                string result = webClient.DownloadString(uri);
+                try
+                {
+                    string result = webClient.DownloadString(uri);
 
-                return JsonConvert.DeserializeObject<T>(result);
+                    return JsonConvert.DeserializeObject<T>(result);
+                }
+                catch (WebException ex)
+                {
+                    if (ex.Status == WebExceptionStatus.ProtocolError)
+                    {
+                        HttpWebResponse webResponse = (HttpWebResponse) ex.Response;
+
+                        if (webResponse.StatusCode == HttpStatusCode.NotFound)
+                        {
+                            return default(T);
+                        }
+                    }
+
+                    throw;
+                }
+                
             }
         }
     }
