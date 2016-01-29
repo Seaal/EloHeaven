@@ -1,0 +1,28 @@
+<div ng-hide="list.editMode">
+    
+    <ul ui-sortable="list.sortableOptions" ng-model="list.selectedChampions" class="image-group">
+        <li ng-class="{ 'resize-horizontal': !list.readOnly }" ng-repeat="champion in list.selectedChampions">
+            <img ng-class="{ 'image-small': list.size=='small', 'champion-image-medium' : list.size=='medium' }" ng-src="{{champion.imageUrl}}" alt="{{champion.name}}" title="{{champion.name}}" />
+        </li>
+    </ul>
+    
+    <button class="btn btn-primary" ng-hide="list.readOnly" ng-click="list.edit()">Edit</button>
+</div>
+
+<div ng-show="list.editMode">
+
+    <div class="form-group">
+        <input type="text" class="form-control" ng-model="list.filterString" placeholder="Search Champions..." />
+    </div>
+
+    <p>Selected {{list.championNumber}} out of {{::list.maxChampionNumber}}
+
+    <ul class="image-group">
+        <li ng-repeat="champion in list.editChampions | filter: { name: list.filterString } track by champion.name" class="champion-select-edit" ng-class="{'champion-selected': champion.selected, 'champion-not-selected' : !champion.selected }" ng-click="list.selectChampion(champion)">
+            <img ng-class="{ 'image-small': list.size=='small', 'champion-image-medium' : list.size=='medium' }" ng-src="{{champion.imageUrl}}" alt="{{champion.name}}" title="{{champion.name}}" />
+        </li>
+    </ul>
+    
+    <button class="btn btn-success" ng-click="list.save()">Save</button>
+    <button class="btn btn-danger" ng-click="list.cancel()">Cancel</button>
+</div>

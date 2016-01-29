@@ -1,0 +1,20 @@
+﻿<li>
+    <a href="#" ng-click="vm.toggleNotificationPanel($event)" ng-class="{ active: vm.showList }">
+        <span class="glyphicon glyphicon-list"></span>
+        <span ng-hide="vm.showList" class="badge notifications-badge">{{vm.newMessages}}</span>
+    </a>
+
+    <div class="panel panel-primary notifications-panel" ng-show="vm.showList">
+        <div class="panel-heading">
+            <h4>Notifications</h4>
+        </div>
+        <div class="panel-body">
+            <div class="notification-section" ng-repeat="notification in vm.notifications">
+                <img ng-src="{{notification.image.url}}" alt="{{notification.image.text}}" title="{{notification.image.text}}" />
+                <div class="notification-body">{{notification.message}}</div>
+            </div>
+            <div style="padding-left: 5px; padding-top: 5px;"><a href="">See All</a></div>
+        </div>
+    </div>
+</li>
+

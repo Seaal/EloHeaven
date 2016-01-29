@@ -9,16 +9,445 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+textarea {
+    resize: none;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+a {
+    cursor: pointer;
+}
+
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.card {
+    display: inline-block;
+    border-color: #333;
+    background-color: #222;
+    color: #9d9d9d;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.mentor-card {
+    cursor: pointer;
+}
+    
+    .mentor-card:hover {
+        border-color: #555;
+        background-color: #444;
+    }
+
+    .mentor-card label {
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    .mentor-card > .panel-body > div > h2 {
+        margin-left: 5px;
+        margin-top: 0;
+        text-align: left;
+        display: inline-block;
+    }
+
+    .mentor-card > .panel-body .information-right {
+        display: inline-block;
+        margin-left: 10px;
+        vertical-align: top;
+    }
+
+    .mentor-card ul, .image-group {
+        list-style: none;
+        padding-left: 0;
+        display: inline-block;
+        margin-bottom: 0;
+    }
+
+        .mentor-card ul > li, .image-group > li {
+            display: inline-block;
+            border: 1px solid #222;
+            border-radius: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            background-color: black;
+            color: #9d9d9d;
+            padding: 2px 4px;
+        }
+
+        .mentor-card ul > li:last-child {
+        margin-right: 0;
+    }
+
+
+.player-card {
+    width: 300px;
+    position: relative;
+    transition: 500ms ease all;
+}
+    
+    .player-card .information {
+        vertical-align: top;
+        display: inline-block;
+        margin-left: 10px;
+        width: 190px;
+    }
+    
+        .player-card .information p {
+            margin: 10px 0 0;
+        }
+        
+        .player-card .information h3 {
+            margin-top: 0;
+            font-weight: bold;
+            font-size: 22px;
+        }
+        
+    .player-card .status-icon {
+        position: absolute;
+        left: 276px;
+        top: -1px;
+    }
+    
+    .player-card.swapping {
+        margin-left: 60px;
+        background-color: #1b6941;
+        border-color: #2c7a52;
+    }
+    
+    .team-right .player-card.swapping {
+        margin-left: 0;
+        margin-right: 60px;
+    }
+
+.image-group {
+    display: block !important;
+}
+
+    .image-group > li {
+        padding: 0 !important;
+    }
+
+.image-rank {
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 2px;
+}
+
+    .image-rank img {
+        display: block;
+    }
+
+    .image-rank span {
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+.rating-block {
+    display: inline-block;
+    color: #fde16d;
+}
+
+.rating-star {
+    margin-right: 2px;
+}
+
+.image-profile {
+    float: left;
+}
+
+.image-large {
+    width: 128px;
+    height: 128px;
+}
+
+.image-medium {
+    width: 64px;
+    height: 64px;
+}
+
+.champion-image-medium {
+    width: 48px;
+    height: 48px;
+}
+
+.image-small {
+    width: 32px;
+    height: 32px;
+}
+
+.image-extra-small {
+    width: 16px;
+    height: 16px;
+}
+
+.hidden-submit {
+    position: absolute;
+    left: -99999px;
+}
+
+.notifications-panel {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+    float: left;
+    font-size: 14px;
+    left: 0;
+    list-style: outside none none;
+    margin: 2px 0 0;
+    min-width: 160px;
+    width: 300px;
+    position: absolute;
+    text-align: left;
+    top: 100%;
+    z-index: 1000;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: 0;
+}
+
+    .notifications-panel > .panel-body {
+        padding: 0 0 5px 0;
+    }
+
+    .notifications-panel > .panel-heading {
+        border-radius: 0;
+        padding-top: 15px;
+    }
+
+        .notifications-panel > .panel-heading > h4 {
+            margin: 0;
+        }
+
+.notifications-badge {
+    position: absolute !important;
+    right: 0px;
+    top: 2px !important;
+    background-color: palevioletred !important;
+    color: white !important;
+}
+
+.notification-section {
+    border-bottom: 1px solid #337ab7;
+    padding: 5px 0 5px 5px;
+    cursor: pointer;
+}
+
+    .notification-section:hover {
+        background-color: #77aef9;
+        -moz-transition: background-color linear 0.25s;
+        -o-transition: background-color linear 0.25s;
+        -webkit-transition: background-color linear 0.25s;
+        transition: background-color linear 0.25s;
+    }
+
+    .notification-section:nth-last-of-type(2) {
+        border-bottom: 0;
+    }
+
+    .notification-section > img {
+        height: 32px;
+        width: 32px;
+        margin-top: 4px;
+        margin-right: 8px;
+        display: inline-block;
+        vertical-align: top;
+        line-height: 32px;
+    }
+
+    .notification-section > .notification-body {
+        display: inline-block;
+        width: 210px;
+    }
+
+.summoner-list > li {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.summoner-list > li > span {
+    margin-left: 10px;
+    font-size: 16px;
+    vertical-align: middle;
+    line-height: 32px;
+}
+
+.runepage-code {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    cursor: text;
+}
+
+.runepage-item {
+    width: 200px;
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.runepage-submit {
+    font-size: 18px;
+    height: 40px;
+}
+
+.image-group > .champion-select-edit {
+    cursor: pointer;
+    margin: 3px 8px 8px 3px;
+    opacity: 1;
+}
+
+@keyframes champ_leave_animation {
+    from {
+    max-width: 64px;
+    opacity: 1;
+    margin: 3px 8px 8px 3px;
+    border: 1px solid #222;
+  }
+  to {
+    max-width: 0;
+    opacity: 0;
+    margin: 3px 0px 8px 0px;
+    border: none;
+  }
+}
+
+@keyframes champ_leave_selected_animation {
+    from {
+    max-width: 64px;
+    opacity: 1;
+    margin: 0px 5px 5px 0px;
+    border: 4px solid greenyellow;
+  }
+  to {
+    max-width: 0;
+    opacity: 0;
+    margin: 0px 0px 5px 0px;
+    border: none;
+  }
+}
+
+.image-group > .champion-select-edit.ng-enter,
+.image-group > .champion-select-edit.ng-leave,
+.image-group > .champion-select-edit.ng-move {
+    -webkit-transition: 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 500ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
+.image-group > .champion-select-edit.ng-enter {
+    opacity: 0;
+    max-width: 0;
+}
+
+.image-group > .champion-select-edit.ng-enter-active {
+    opacity: 1;
+    max-width: 64px;
+}
+
+.image-group > .champion-select-edit.champion-not-selected.ng-leave {
+    -webkit-animation:0.5s champ_leave_animation;
+    -moz-animation:0.5s champ_leave_animation;
+    -o-animation:0.5s champ_leave_animation;
+    animation:0.5s champ_leave_animation;
+}
+
+.image-group > .champion-select-edit.champion-selected.ng-leave {
+    -webkit-animation:0.5s champ_leave_selected_animation;
+    -moz-animation:0.5s champ_leave_selected_animation;
+    -o-animation:0.5s champ_leave_selected_animation;
+    animation:0.5s champ_leave_selected_animation;
+}
+
+.image-group > .champion-select-edit.ng-move {
+    margin: 3px 0px 8px 0px;
+}
+
+.image-group > .champion-select-edit.champion-selected.ng-move {
+    margin: 0px 0px 5px 0px;
+}
+
+.image-group > .champion-select-edit.ng-move-active {
+    margin: 3px 8px 8px 3px;
+}
+
+.image-group > .champion-selected {
+    border: 4px solid greenyellow;
+    border-radius: 2px;
+    margin: 0 5px 5px 0;
+}
+
+.resize-horizontal {
+    cursor: move;
+}
+
+textarea.resize-vertical {
+    resize: vertical;
+}
+
+.multi-input-group .input-group {
+    margin-bottom: 10px;
+}
+
+.help-only span {
+    color: #737373 !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.form-group .checkbox > label {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.time-input {
+    display: inline-block;
+    width: 75px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    color: #6a6a6a;
+}
+
+.icon-button:hover {
+    color: #9d9d9d;
+}
+
+.team-right div {
+    float: right !important;
+}
+
+.team-title {
+    font-weight: bold;
+}
+
+.team-red {
+    color: #cb2124;
+}
+
+.team-blue {
+    color: #2747e8;
 }

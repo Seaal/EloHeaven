@@ -1,0 +1,81 @@
+<h3>Availability to Mentor</h3>
+
+<form name="application.form" class="form-horizontal">
+	<div class="form-group" ng-class="{'has-error': (application.submitted || application.form.summary.$touched) && application.form.summary.$invalid}">
+		<label for="timezoneSelect" class="col-md-2 control-label">Select your Timezone</label>
+		
+		<div class="col-md-6">
+			<seaal-timezone-picker selected-timezone="application.timezone"></seaal-timezone-picker>
+			<span class="help-block">The time for the selected timezone is {{application.currentTime | amTimezone:application.timezone | amDateFormat: 'LTS' }}.</span>
+		</div>
+		
+		<div class="col-md-4 help-only">
+			<span id="timezoneSelectHelp" class="help-block">Please ensure you are on the correct timezone. This is important for scheduling mentoring sessions.</span>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{'has-error': (application.submitted || application.form.summary.$touched) && application.form.summary.$invalid}">
+		<label for="timezoneSelect" class="col-md-2 control-label">Availability</label>
+		
+		<div class="col-md-6">
+			<select class="form-control" ng-model="application.availability" ng-options="option.id as option.name for option in application.availabilityOptions" required>
+				<option value="">Please Select..</option>
+			</select>
+		</div>
+		
+		<div class="col-md-4 help-only">
+			<span id="timezoneSelectHelp" class="help-block">Select the most appropriate availability.</span>
+			<span class="help-block" ng-show="application.availability == 1">Choose this option if you will not be available at anytime consistently. Potential Mentees will be told to contact you to arrange a mentoring session.</span>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-if="application.availability == 2" ng-class="{'has-error': (application.submitted || application.form.summary.$touched) && application.form.summary.$invalid}">
+		<label for="timezoneSelect" class="col-md-2 control-label">State the time range you will be available</label>
+		
+		<div class="col-md-6">
+			<input class="form-control time-input" />
+			until
+			<input class="form-control time-input" />
+			everyday
+		</div>
+		
+		<div class="col-md-4 help-only">
+			<span class="help-block">Choose this option if you will be available for mentoring at the same every day.</span>
+		</div>
+	</div>
+			
+	<div class="form-group" ng-if="application.availability == 3" ng-class="{'has-error': (application.submitted || application.form.summary.$touched) && application.form.summary.$invalid}">
+		<label for="timezoneSelect" class="col-md-2 control-label">State the time range you will be available</label>
+		
+		<div class="col-md-6">
+			<select class="form-control">
+				<option value="1">Monday</option>
+			</select>
+			
+			<input class="form-control time-input" />
+			until
+			<input class="form-control time-input" />
+			everyday
+		</div>
+		
+		<div class="col-md-4 help-only">
+			<span class="help-block">Choose this option if you will be available at the same times every week, but these times are different on each day.</span>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{'has-error': (application.submitted || application.form.summary.$touched) && application.form.summary.$invalid}">
+		<label for="timezoneSelect" class="col-md-2 control-label">Contact Preferences</label>
+		
+		<div class="col-md-6">
+			<div class="checkbox" ng-repeat="preference in application.contactPreferences">
+				<label>
+					<input type="checkbox" ng-selected="preference.selected" /> {{preference.name}}
+				</label>
+			</div>
+		</div>
+		
+		<div class="col-md-4 help-only">
+			<span id="timezoneSelectHelp" class="help-block">Select how you would like potential mentee's to contact you.</span>
+		</div>
+	</div>
+</form>

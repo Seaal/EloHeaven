@@ -1,0 +1,17 @@
+<div>
+	<h1>Mentor Application</h1>
+	
+	Step {{application.currentStep}} of {{::application.totalSteps}}
+	
+	<div ui-view></div>
+	
+	<div ng-show="application.errors.length > 0" class="alert alert-danger" role="alert">
+		<ul>
+			<li ng-repeat="error in application.errors">{{error.message}}</li>
+		</ul>	
+	</div>
+	
+	<button class="btn btn-danger" ng-show="application.currentStep == 1" ui-sref="search">Cancel</button>
+	<button class="btn btn-danger" ng-hide="application.currentStep == 1" ng-click="application.previousStep(application.currentStep)">Back</button>
+	<button class="btn btn-success pull-right" ng-hide="application.currentStep == application.totalSteps" ng-click="application.nextStep(application.currentStep)">Continue</button>
+</div>

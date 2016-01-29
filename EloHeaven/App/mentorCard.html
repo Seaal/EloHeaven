@@ -1,0 +1,42 @@
+﻿<div class="panel panel-primary card mentor-card">
+    <div class="panel-body">
+        <div>
+            <eh-profile-picture size="small" user="mentor"></eh-profile-picture>
+            <h2>{{mentor.name}}</h2>
+        </div>
+
+        <div>
+            <div class="image-rank" title="{{mentor.rank.name}}">
+                <img ng-src="{{mentor.rank.imageUrl}}" alt="{{mentor.rank.name}}" />
+                <span>{{mentor.rank.name}}</span>
+            </div>
+
+            <div class="information-right">
+                <label>Regions</label>
+
+                <ul>
+                    <li ng-repeat="region in mentor.regions" title="{{region.longName}}">{{region.shortName}}</li>
+                </ul>
+
+                <br />
+
+                <label>Rating</label>
+                <seaal-star-rating rating="mentor.rating"></seaal-star-rating>
+
+                <br />
+
+                <label>Last Active</label>
+                <span am-time-ago="mentor.lastActive" title="{{mentor.lastActive | amDateFormat: 'L LT'}}"></span>
+            </div>
+
+            <div style="width: 195px;" class="information-right visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
+                <eh-champion-list selected-champions="mentor.champions" read-only="true"></eh-champion-list>
+            </div>
+        </div>        
+
+        <div class="information-bottom">
+            <ul>
+                <li ng-repeat="badge in mentor.badges" title="{{badge.extraInfo}}">{{badge.name}}</li>
+            </ul>
+        </div>
+</div>

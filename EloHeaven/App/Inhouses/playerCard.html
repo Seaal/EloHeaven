@@ -1,0 +1,21 @@
+<div class="col-xs-12">
+    <div class="panel panel-primary card player-card" ng-class="{'swapping': card.player.status == 'swapping'}">
+        <div class="panel-body" ng-if="card.player.status == 'empty'">
+            <img src="images/unknown-summoner.png" class="image-medium" alt="Unknown" />
+            <div class="information">
+                <form ng-submit="card.validatePlayer(card.player);">
+                    <input type="text" ng-model="card.player.name" class="form-control" placeholder="Enter Player Name..." ng-blur="card.validatePlayer(card.player);" />
+                    <p class="text-danger">{{card.errorMessage}}</p>
+                </form>
+            </div>
+        </div>
+        <div class="panel-body" ng-if="card.player.status != 'empty'">
+            <eh-league-picture size="medium" alt="{{card.player.name}}" summoner="card.player"></eh-league-picture>
+            <button class="icon-button status-icon" ng-show="card.player.status == 'confirmed'" ng-click="card.removePlayer(card.player);"><i class="fa fa-close"></i></button>
+            <div class="information">
+                <h3>{{card.player.name}}</h3>
+                <span class="bold">{{card.player.rank}}</span>
+            </div>
+        </div>
+    </div>
+</div>

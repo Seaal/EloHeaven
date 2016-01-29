@@ -1,0 +1,3 @@
+﻿<div class="rating-block" title="{{vm.rating}} - {{vm.ratingText}}">
+    <i ng-repeat="star in vm.stars" ng-class='{ "fa-star": star.full, "fa-star-half-o": star.half, "fa-star-o": star.empty }' class="fa rating-star"></i>
+</div>
