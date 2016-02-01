@@ -197,7 +197,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InhouseController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Filters\NotFoundExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\NotFoundFilterAttribute.cs" />
+    <Compile Include="Filters\ServiceUnavailableFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

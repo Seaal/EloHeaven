@@ -9,7 +9,7 @@ using EloHeaven.Infrastructure.Exceptions;
 
 namespace EloHeaven.Filters
 {
-    public class NotFoundExceptionFilterAttribute : ExceptionFilterAttribute
+    public class NotFoundFilterAttribute : ExceptionFilterAttribute
     {
         public override void OnException(HttpActionExecutedContext context)
         {

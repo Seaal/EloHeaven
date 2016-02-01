@@ -29,7 +29,8 @@ namespace EloHeaven
 
             //Exception Filters
 
-            config.Filters.Add(new NotFoundExceptionFilterAttribute());
+            config.Filters.Add(new NotFoundFilterAttribute());
+            config.Filters.Add(new ServiceUnavailableFilterAttribute());
         }
     }
 }

@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\DataNotFoundException.cs" />
+    <Compile Include="Exceptions\ServiceUnavailableException.cs" />
+    <Compile Include="Extensions\WebExceptionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

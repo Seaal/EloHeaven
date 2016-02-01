@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using EloHeaven.Infrastructure.Extensions;
 using Newtonsoft.Json;
 
 namespace EloHeaven.Logic.Common
@@ -22,14 +23,11 @@ namespace EloHeaven.Logic.Common
                 }
                 catch (WebException ex)
                 {
-                    if (ex.Status == WebExceptionStatus.ProtocolError)
-                    {
-                        HttpWebResponse webResponse = (HttpWebResponse) ex.Response;
+                    HttpStatusCode? statusCode = ex.GetErrorCode();
 
-                        if (webResponse.StatusCode == HttpStatusCode.NotFound)
-                        {
-                            return default(T);
-                        }
+                    if (statusCode.HasValue && statusCode == HttpStatusCode.NotFound)
+                    {
+                        return default(T);
                     }
 
                     throw;

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using EloHeaven.Infrastructure.Exceptions;
+using EloHeaven.Infrastructure.Extensions;
 using EloHeaven.Logic.Common;
 using EloHeaven.Logic.LeagueApi.DTOs;
 
@@ -49,14 +51,30 @@ namespace EloHeaven.Logic.LeagueApi
 
         private T Get<T>(string resource)
         {
-            Dictionary<string, T> dictionary = _jsonClient.GetRequest<Dictionary<string, T>>(resource);
-
-            if (dictionary == null || !dictionary.Any())
+            try
             {
-                return default(T);
+                //The riot API loves to return things in a dictionary format, not really sure why
+                Dictionary<string, T> dictionary = _jsonClient.GetRequest<Dictionary<string, T>>(resource);
+
+                if (dictionary == null || !dictionary.Any())
+                {
+                    return default(T);
+                }
+
+                return dictionary.First().Value;
+            }
+            catch (WebException ex)
+            {
+                HttpStatusCode? statusCode = ex.GetErrorCode();
+
+                if (statusCode.HasValue && (statusCode == HttpStatusCode.ServiceUnavailable || statusCode == HttpStatusCode.InternalServerError))
+                {
+                    throw new ServiceUnavailableException("The Riot API is currently unavailable. Please try again later.");
+                }
+
+                throw;
             }
 
-            return dictionary.First().Value;
         }
     }
 }
