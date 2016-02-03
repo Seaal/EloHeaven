@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Infrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Services.Logic", "EloHeaven.Services.Logic\EloHeaven.Services.Logic.csproj", "{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Tests", "EloHeaven.Tests\EloHeaven.Tests.csproj", "{9A72C84B-9682-4198-A65D-A0B875D20C8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A72C84B-9682-4198-A65D-A0B875D20C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A72C84B-9682-4198-A65D-A0B875D20C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A72C84B-9682-4198-A65D-A0B875D20C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A72C84B-9682-4198-A65D-A0B875D20C8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

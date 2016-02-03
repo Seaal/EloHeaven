@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\DataNotFoundException.cs" />
     <Compile Include="Exceptions\ServiceUnavailableException.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\WebExceptionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -41,9 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Inhouses\IInhouseService.cs" />
-    <Compile Include="Inhouses\InhouseModel.cs" />
     <Compile Include="Inhouses\InhouseService.cs" />
-    <Compile Include="Inhouses\PlayerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

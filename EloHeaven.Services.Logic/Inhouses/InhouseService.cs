@@ -1,19 +1,22 @@
 ﻿using EloHeaven.Logic.LeagueApi;
+using EloHeaven.Logic.MentoredInhouses;
 
 namespace EloHeaven.Services.Logic.Inhouses
 {
     public class InhouseService : IInhouseService
     {
         private readonly ILeagueApiService _leagueApiService;
+        private readonly IBalancingService _balancingService;
 
-        public InhouseService(ILeagueApiService leagueApiService)
+        public InhouseService(ILeagueApiService leagueApiService, IBalancingService balancingService)
         {
             _leagueApiService = leagueApiService;
+            _balancingService = balancingService;
         }
 
-        public InhouseModel BalanceTeams(InhouseModel inhouseModel)
+        public SwapsModel BalanceTeams(InhouseModel inhouseModel)
         {
-            throw new System.NotImplementedException();
+            return _balancingService.BalanceInhouse(inhouseModel);
         }
 
         public PlayerModel GetPlayer(string playerName)
@@ -25,6 +28,7 @@ namespace EloHeaven.Services.Logic.Inhouses
                 Id = (int) summoner.Id,
                 Name = summoner.Name,
                 Rank = summoner.Tier + " " + summoner.Division,
+                Rating = _balancingService.GetRating(summoner),
                 Region = "NA",
                 Status = "confirmed"
             };

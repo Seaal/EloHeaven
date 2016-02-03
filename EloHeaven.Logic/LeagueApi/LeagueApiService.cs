@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EloHeaven.Infrastructure.Extensions;
 using EloHeaven.Logic.LeagueApi.DTOs;
 
 namespace EloHeaven.Logic.LeagueApi
@@ -28,12 +29,19 @@ namespace EloHeaven.Logic.LeagueApi
                 Level = summonerDto.SummonerLevel
             };
 
+            SetRankingInformation(summoner, summonerDto);
+
+            return summoner;
+        }
+
+        private void SetRankingInformation(LeagueSummoner summoner, SummonerDTO summonerDto)
+        {
             ICollection<LeagueDTO> leagueDtos = _leagueRequestService.GetLeagues(summonerDto.Id);
 
             if (leagueDtos == null)
             {
                 summoner.Tier = "Unranked";
-                return summoner;
+                return;
             }
 
             LeagueDTO rankedSoloLeagueDto = leagueDtos.FirstOrDefault(l => l.Queue == _rankedSolo);
@@ -44,16 +52,24 @@ namespace EloHeaven.Logic.LeagueApi
             }
             else
             {
-                summoner.Tier = rankedSoloLeagueDto.Tier;
+                summoner.Tier = rankedSoloLeagueDto.Tier.ToCapitalized();
 
                 //For solo queue there's only one entry, so we can just get it
                 LeagueEntryDTO entryDto = rankedSoloLeagueDto.Entries.First();
 
-                summoner.Division = entryDto.Division;
+                summoner.Division = IsDivisionRequired(summoner.Tier) ? entryDto.Division : "";
                 summoner.LeaguePoints = entryDto.LeaguePoints;
             }
+        }
 
-            return summoner;
+        private bool IsDivisionRequired(string tier)
+        {
+            if (tier == "Challenger" || tier == "Master")
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

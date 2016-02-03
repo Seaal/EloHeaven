@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Combinatorics, Version=1.0.3.0, Culture=neutral, PublicKeyToken=d5738f21cd5d2f66, processorArchitecture=MSIL">
+      <HintPath>..\packages\Combinatorics.1.0.3.2\lib\net40\Combinatorics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -43,8 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MentoredInhouses\BalancingService.cs" />
+    <Compile Include="MentoredInhouses\BalancingStrategyFactory.cs" />
+    <Compile Include="MentoredInhouses\BruteForceBalancingStrategy.cs" />
     <Compile Include="Common\IJsonClient.cs" />
     <Compile Include="Common\JsonClient.cs" />
+    <Compile Include="MentoredInhouses\IBalancingService.cs" />
+    <Compile Include="MentoredInhouses\IBalancingStrategy.cs" />
     <Compile Include="LeagueApi\DTOs\LeagueDTO.cs" />
     <Compile Include="LeagueApi\DTOs\LeagueEntryDTO.cs" />
     <Compile Include="LeagueApi\DTOs\SummonerDTO.cs" />
@@ -54,6 +63,9 @@
     <Compile Include="LeagueApi\LeagueApiService.cs" />
     <Compile Include="LeagueApi\LeagueRequestService.cs" />
     <Compile Include="LeagueApi\LeagueSummoner.cs" />
+    <Compile Include="MentoredInhouses\InhouseModel.cs" />
+    <Compile Include="MentoredInhouses\PlayerModel.cs" />
+    <Compile Include="MentoredInhouses\SwapsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +73,9 @@
       <Project>{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}</Project>
       <Name>EloHeaven.Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

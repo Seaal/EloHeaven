@@ -34,7 +34,7 @@ namespace EloHeaven
         private static void RegisterServices(Container container, Assembly assembly, Lifestyle lifestyle)
         {
             var registrations = assembly.GetExportedTypes()
-                                 .Where(t => t.GetInterfaces().Any())
+                                 .Where(t => t.GetInterfaces().Any() && !t.IsEnum)
                                  .Select(t => new { Service = t.GetInterfaces().Single(), Implementation = t });
 
             foreach (var reg in registrations)
