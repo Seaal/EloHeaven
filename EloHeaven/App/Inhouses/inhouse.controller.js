@@ -37,46 +37,21 @@
             $scope.$watch(angular.bind(vm, function() {
                 return this.redTeam;
             }), watchNoPlayersConfirmed(vm.blueTeam), true);
-            
-            function watchNoPlayersConfirmed(otherTeam) {
-                var watchFunction = function(newValue) {
-                    if(!newValue) {
-                        return;
-                    }
-                    
-                    var playersConfirmed = 0;
-                    
-                    for(var i=0;i<newValue.length;i++) {
-                        if(newValue[i].status == "confirmed") {
-                            playersConfirmed++;
-                        }
-                    }
-                    
-                    for(var i=0;i<otherTeam.length;i++) {
-                        if(otherTeam[i].status == "confirmed") {
-                            playersConfirmed++;
-                        }
-                    }
-                    
-                    vm.allConfirmed = playersConfirmed == vm.playersPerTeam * 2;
-                }
-                
-                return watchFunction;
-            }
         }
         
         function balanceTeams() {
-            inhouseService.balanceTeams(vm.blueTeam, vm.redTeam).then(function(swaps) {
+            inhouseService.balanceTeams(vm.blueTeam, vm.redTeam).then(function(balanceDifference) {
                 vm.balancing = true;
             });          
         }
         
         function swapPlayers() {
-            inhouseService.swapPlayers(vm.blueTeam, vm.redTeam).then(function(swaps) {
+            inhouseService.swapPlayers(vm.blueTeam, vm.redTeam).then(function (swaps) {
+                vm.balancing = false;
+
                 vm.blueTeam = swaps.blueTeam;
                 vm.redTeam = swaps.redTeam;
-
-                vm.balancing = false;
+                vm.allConfirmed = true;
             });
         }
         
@@ -86,6 +61,32 @@
                 vm.redTeam[i].status = "confirmed";
                 vm.balancing = false;
             }
+        }
+
+        function watchNoPlayersConfirmed(otherTeam) {
+            var watchFunction = function (newValue) {
+                if (!newValue) {
+                    return;
+                }
+
+                var playersConfirmed = 0;
+
+                for (var i = 0; i < newValue.length; i++) {
+                    if (newValue[i].status == "confirmed") {
+                        playersConfirmed++;
+                    }
+                }
+
+                for (var i = 0; i < otherTeam.length; i++) {
+                    if (otherTeam[i].status == "confirmed") {
+                        playersConfirmed++;
+                    }
+                }
+
+                vm.allConfirmed = playersConfirmed == vm.playersPerTeam * 2;
+            }
+
+            return watchFunction;
         }
     }
     

@@ -67,32 +67,38 @@
             var deferred = $q.defer();
             
             $timeout(function() {
-               var swaps = {
-                  redTeam: [],
-                  blueTeam: [] 
-               };
-               
-               for(var i=0; i<5; i++) {
-                   var newBluePlayer = angular.copy(blueTeam[i]);
-                   var newRedPlayer = angular.copy(redTeam[i]);
-                   
-                   if(newBluePlayer.status == "swapping") {
-                       swaps.redTeam.push(newBluePlayer);
-                   } else {
-                       swaps.blueTeam.push(newBluePlayer);
+
+                var blueSwaps = [];
+                var redSwaps = [];
+
+                for (var i = 0; i < 5; i++) {
+                    var bluePlayer = blueTeam[i];
+                    var redPlayer = redTeam[i];
+
+                    if (bluePlayer.status == "swapping") {
+                        blueSwaps.push(bluePlayer);
                    }
                    
-                   if(newRedPlayer.status == "swapping") {
-                       swaps.blueTeam.push(newRedPlayer);
-                   } else {
-                       swaps.redTeam.push(newRedPlayer);
+                    if (redPlayer.status == "swapping") {
+                        redSwaps.push(redPlayer);
                    }
                    
-                   newBluePlayer.status = "confirmed";
-                   newRedPlayer.status = "confirmed";
-                   
-                   deferred.resolve(swaps);
-               }
+                   bluePlayer.status = "confirmed";
+                   redPlayer.status = "confirmed";
+                }
+
+                for (var i = 0; i < blueSwaps.length; i++) {
+                    var blueIndex = blueTeam.indexOf(blueSwaps[i]);
+                    var redIndex = redTeam.indexOf(redSwaps[i]);
+
+                    blueTeam.splice(blueIndex, 1);
+                    redTeam.splice(redIndex, 1);
+
+                    blueTeam.push(redSwaps[i]);
+                    redTeam.push(blueSwaps[i]);
+                }
+
+                deferred.resolve();
             }, 0);
             
             return deferred.promise;
