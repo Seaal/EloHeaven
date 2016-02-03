@@ -23,7 +23,7 @@
             
             $timeout(function() {
                 deferred.resolve();
-            }, 100);
+            }, 0);
             
             return deferred.promise;
         }
@@ -93,7 +93,7 @@
                    
                    deferred.resolve(swaps);
                }
-            }, 500);
+            }, 0);
             
             return deferred.promise;
         }
