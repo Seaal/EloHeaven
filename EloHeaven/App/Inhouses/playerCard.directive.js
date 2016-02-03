@@ -45,6 +45,7 @@
                     vm.player.id = player.id;
                     vm.player.name = player.name;
                     vm.player.rank = player.rank;
+                    vm.player.rating = player.rating;
                     vm.player.region = player.region;
                     vm.player.status = player.status;
                 }, function (error) {

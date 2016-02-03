@@ -63,12 +63,12 @@ namespace EloHeaven.Logic.MentoredInhouses
 
         private ICollection<PlayerModel> CalculateSwaps(ICollection<PlayerModel> originalTeam, ICollection<PlayerModel> team1, ICollection<PlayerModel> team2)
         {
-            ICollection<PlayerModel> team1SwappedPlayers = team2.Except(originalTeam).ToList();
+            ICollection<PlayerModel> team1SwappedPlayers = originalTeam.Except(team1).ToList();
 
             //There should be at most 2 swaps per team, so if we get more than 2 swaps in team 1, then finding who changed to team 2 will be less than 2.
             if (team1SwappedPlayers.Count > 2)
             {
-                return team1.Except(originalTeam).ToList();
+                return originalTeam.Except(team2).ToList();
             }
 
             return team1SwappedPlayers;

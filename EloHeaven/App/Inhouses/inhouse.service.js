@@ -29,34 +29,38 @@
         }
         
         function balanceTeams(blueTeam, redTeam) {
-            var deferred = $q.defer();
-            
-            $timeout(function() {
-                var swaps = {
-                    redTeam: [],
-                    blueTeam: []
-                };
-                
-                for(var i=0; i<5;i++) {
-                    var newBluePlayer = angular.copy(blueTeam[i]);
-                    var newRedPlayer = angular.copy(redTeam[i]);
-                    
-                    if(Math.random() > 0.75) {
-                        newBluePlayer.status = "swapping";
-                        newRedPlayer.status = "swapping";
-                    } else {
-                        newBluePlayer.status = "locked";
-                        newRedPlayer.status = "locked";
+            var inhouseModel = {
+                blueTeam: blueTeam,
+                redTeam: redTeam
+            };
+
+            return $http.post("/api/inhouse/balance", inhouseModel).then(function(response) {
+                var swaps = response.data;
+
+                for (var i = 0; i < swaps.blueSwaps.length; i++) {
+                    for (var j = 0; j < blueTeam.length; j++) {
+                        if (swaps.blueSwaps[i].id == blueTeam[j].id) {
+                            blueTeam[j].status = "swapping";
+                        }
+                        
+                        if (swaps.redSwaps[i].id == redTeam[j].id) {
+                            redTeam[j].status = "swapping";
+                        }
                     }
-                    
-                    swaps.blueTeam.push(newBluePlayer);
-                    swaps.redTeam.push(newRedPlayer);
                 }
-                
-                deferred.resolve(swaps);
-            }, 500);
-            
-            return deferred.promise;
+
+                for (var i = 0; i < blueTeam.length; i++) {
+                    if (blueTeam[i].status != "swapping") {
+                        blueTeam[i].status = "locked";
+                    }
+
+                    if (redTeam[i].status != "swapping") {
+                        redTeam[i].status = "locked";
+                    }
+                }
+
+                return swaps.ratingDifference;
+            });
         }
         
         function swapPlayers(blueTeam, redTeam) {

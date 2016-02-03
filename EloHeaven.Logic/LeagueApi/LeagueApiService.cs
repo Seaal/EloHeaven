@@ -25,6 +25,7 @@ namespace EloHeaven.Logic.LeagueApi
 
             LeagueSummoner summoner = new LeagueSummoner()
             {
+                Id = summonerDto.Id,
                 Name = summonerDto.Name,
                 Level = summonerDto.SummonerLevel
             };
@@ -41,6 +42,7 @@ namespace EloHeaven.Logic.LeagueApi
             if (leagueDtos == null)
             {
                 summoner.Tier = "Unranked";
+                summoner.Division = "";
                 return;
             }
 
@@ -49,6 +51,7 @@ namespace EloHeaven.Logic.LeagueApi
             if (rankedSoloLeagueDto == null)
             {
                 summoner.Tier = "Unranked";
+                summoner.Division = "";
             }
             else
             {
