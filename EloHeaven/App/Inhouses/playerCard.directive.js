@@ -7,7 +7,7 @@
     function playerCard() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'App/Inhouses/playerCard.html',
+            templateUrl: "/App/Inhouses/playerCard.html",
             scope: {
                 player: "="
             },
