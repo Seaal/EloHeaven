@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using EloHeaven.Infrastructure.Exceptions;
 using EloHeaven.Infrastructure.Extensions;
 using EloHeaven.Logic.Common;
@@ -26,7 +28,7 @@ namespace EloHeaven.Logic.LeagueApi
         {
             string resource = GetLeagueResourceUri("v1.4/summoner/by-name/" + summonerName);
 
-            SummonerDTO summonerDto = Get<SummonerDTO>(resource);
+            SummonerDTO summonerDto = Get<SummonerDTO>(resource, () => GetSummoner(summonerName));
 
             if (summonerDto == null)
             {
@@ -40,7 +42,7 @@ namespace EloHeaven.Logic.LeagueApi
         {
             string resource = GetLeagueResourceUri("v2.5/league/by-summoner/" + summonerId + "/entry");
 
-            return Get<ICollection<LeagueDTO>>(resource);
+            return Get<ICollection<LeagueDTO>>(resource, () => GetLeagues(summonerId));
         }
 
         private string GetLeagueResourceUri(string resource)
@@ -49,11 +51,11 @@ namespace EloHeaven.Logic.LeagueApi
             return _riotApi + resource + apiKeyDeliminater + LeagueApiKey.Key;
         }
 
-        private T Get<T>(string resource)
+        private T Get<T>(string resource, Func<T> retryFunc)
         {
             try
             {
-                //The riot API loves to return things in a dictionary format, not really sure why
+                //The riot API loves to return things in a dictionary format
                 Dictionary<string, T> dictionary = _jsonClient.GetRequest<Dictionary<string, T>>(resource);
 
                 if (dictionary == null || !dictionary.Any())
@@ -67,9 +69,24 @@ namespace EloHeaven.Logic.LeagueApi
             {
                 HttpStatusCode? statusCode = ex.GetErrorCode();
 
-                if (statusCode.HasValue && (statusCode == HttpStatusCode.ServiceUnavailable || statusCode == HttpStatusCode.InternalServerError))
+                if (statusCode.HasValue)
                 {
-                    throw new ServiceUnavailableException("The Riot API is currently unavailable. Please try again later.");
+                    if (statusCode == HttpStatusCode.ServiceUnavailable ||
+                        statusCode == HttpStatusCode.InternalServerError)
+                    {
+                        throw new ServiceUnavailableException("The Riot API is currently unavailable. Please try again later.");
+                    }
+
+                    if (statusCode == (HttpStatusCode) 429)
+                    {
+                        string retryAfterHeader = ex.Response.Headers["Retry-After"];
+
+                        int retryAfter = int.Parse(retryAfterHeader);
+
+                        Thread.Sleep(retryAfter * 1000);
+
+                        return retryFunc();
+                    }
                 }
 
                 throw;
