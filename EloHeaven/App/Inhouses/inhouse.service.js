@@ -99,17 +99,22 @@
                     }
                 }
 
+                var hasSwaps = swaps.blueSwaps.length > 0;
+
                 for (var i = 0; i < blueTeam.length; i++) {
                     if (blueTeam[i].status != "swapping") {
-                        blueTeam[i].status = "locked";
+                        blueTeam[i].status = hasSwaps ? "locked" : "confirmed";
                     }
 
                     if (redTeam[i].status != "swapping") {
-                        redTeam[i].status = "locked";
+                        redTeam[i].status = hasSwaps ? "locked" : "confirmed";
                     }
                 }
 
-                return swaps.ratingDifference;
+                return {
+                    hasSwaps: hasSwaps,
+                    ratingDifference: swaps.ratingDifference
+                };
             });
         }
         

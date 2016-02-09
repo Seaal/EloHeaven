@@ -14,7 +14,7 @@
         vm.cancelSwap = cancelSwap;
         vm.swapPlayers = swapPlayers;
         vm.allConfirmed = false;
-        vm.balancing = false;
+        vm.swapping = false;
         
         activate();
         
@@ -33,17 +33,14 @@
         }
         
         function balanceTeams() {
-            inhouseService.balanceTeams().then(function(balanceDifference) {
-                vm.balancing = true;
+            inhouseService.balanceTeams().then(function (balanceInfo) {
+                vm.swapping = balanceInfo.hasSwaps;
             });          
         }
         
         function swapPlayers() {
             inhouseService.swapPlayers().then(function (swaps) {
-                vm.balancing = false;
-
-                vm.blueTeam = swaps.blueTeam;
-                vm.redTeam = swaps.redTeam;
+                vm.swapping = false;
                 vm.allConfirmed = true;
             });
         }
@@ -52,7 +49,7 @@
             for(var i=0; i< vm.playersPerTeam; i++) {
                 vm.blueTeam[i].status = "confirmed";
                 vm.redTeam[i].status = "confirmed";
-                vm.balancing = false;
+                vm.swapping = false;
             }
         }
 

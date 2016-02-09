@@ -13,7 +13,6 @@
     </div>
 </div>
 
-
-<button class="btn btn-primary center-block" ng-disabled="!inhouse.allConfirmed" ng-hide="inhouse.balancing" ng-click="inhouse.balanceTeams();">Balance Teams</button>
-<button class="btn btn-success center-block" ng-show="inhouse.balancing" ng-click="inhouse.swapPlayers();">Swap Players</button>
-<button class="btn btn-danger center-block" ng-show="inhouse.balancing" ng-click="inhouse.cancelSwap();">Cancel</button>
+<button class="btn btn-primary center-block" ng-disabled="!inhouse.allConfirmed" ng-hide="inhouse.swapping" ng-click="inhouse.balanceTeams();">Balance Teams</button>
+<button class="btn btn-success center-block" ng-show="inhouse.swapping" ng-click="inhouse.swapPlayers();">Swap Players</button>
+<button class="btn btn-danger center-block" ng-show="inhouse.swapping" ng-click="inhouse.cancelSwap();">Cancel</button>
