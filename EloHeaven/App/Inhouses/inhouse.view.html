@@ -14,5 +14,7 @@
 </div>
 
 <button class="btn btn-primary center-block" ng-disabled="!inhouse.allConfirmed" ng-hide="inhouse.swapping" ng-click="inhouse.balanceTeams();">Balance Teams</button>
-<button class="btn btn-success center-block" ng-show="inhouse.swapping" ng-click="inhouse.swapPlayers();">Swap Players</button>
-<button class="btn btn-danger center-block" ng-show="inhouse.swapping" ng-click="inhouse.cancelSwap();">Cancel</button>
+<div class="text-center" ng-show="inhouse.swapping">
+    <button class="btn btn-success" ng-click="inhouse.swapPlayers();">Swap Players</button>
+    <button class="btn btn-danger" ng-click="inhouse.cancelSwap();">Cancel</button>
+</div>
