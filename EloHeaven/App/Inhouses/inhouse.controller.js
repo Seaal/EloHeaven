@@ -19,17 +19,10 @@
         activate();
         
         function activate() {
-            for(var i=0;i<vm.playersPerTeam;i++) {
-                vm.blueTeam.push({
-                    name: "",
-                    status: "empty"
-                });
-                
-                vm.redTeam.push({
-                    name: "",
-                    status: "empty"
-                });
-            }
+            var teams = inhouseService.getTeams();
+
+            vm.blueTeam = teams.blueTeam;
+            vm.redTeam = teams.redTeam;
             
             $scope.$watch(angular.bind(vm, function() {
                 return this.blueTeam;
@@ -40,13 +33,13 @@
         }
         
         function balanceTeams() {
-            inhouseService.balanceTeams(vm.blueTeam, vm.redTeam).then(function(balanceDifference) {
+            inhouseService.balanceTeams().then(function(balanceDifference) {
                 vm.balancing = true;
             });          
         }
         
         function swapPlayers() {
-            inhouseService.swapPlayers(vm.blueTeam, vm.redTeam).then(function (swaps) {
+            inhouseService.swapPlayers().then(function (swaps) {
                 vm.balancing = false;
 
                 vm.blueTeam = swaps.blueTeam;

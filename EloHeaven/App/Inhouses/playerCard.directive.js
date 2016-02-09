@@ -51,6 +51,8 @@
                 }, function (error) {
                     if (error.status == 404) {
                         vm.errorMessage = "Player could not be found.";
+                    } else if (error.message) {
+                        vm.errorMessage = error.message;
                     } else {
                         vm.errorMessage = "An error occurred. Please try again later.";
                     }

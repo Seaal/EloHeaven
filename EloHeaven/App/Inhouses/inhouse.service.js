@@ -5,14 +5,64 @@
         .factory("inhouseService", inhouseService);
         
     function inhouseService($http, $q, $timeout) {
+        var blueTeam = [];
+        var redTeam = [];
+        var maxNumberOfPlayersPerTeam = 5;
+
+        activate();
+
+        function activate() {
+            for (var i = 0; i < maxNumberOfPlayersPerTeam; i++) {
+                blueTeam.push({
+                    name: "",
+                    status: "empty"
+                });
+
+                redTeam.push({
+                    name: "",
+                    status: "empty"
+                });
+            }
+        }
+
         return {
+            getTeams: getTeams,
             addPlayer: addPlayer,
             removePlayer: removePlayer,
             balanceTeams: balanceTeams,
             swapPlayers: swapPlayers
         };
         
+        function getTeams() {
+            return {
+                blueTeam: blueTeam,
+                redTeam: redTeam
+            };
+        }
+
         function addPlayer(playerName) {
+            var numDupes = 0;
+
+            for (var i = 0; i < maxNumberOfPlayersPerTeam; i++) {
+                if (blueTeam[i].name.toLowerCase().replace(" ", "") === playerName.toLowerCase().replace(" ", "") ||
+                    redTeam[i].name.toLowerCase().replace(" ", "") === playerName.toLowerCase().replace(" ", "")) {
+
+                    numDupes++;
+
+                    if (numDupes == 2) {
+                        var deferred = $q.defer();
+
+                        $timeout(function () {
+                            deferred.reject({
+                                message: "Player already exists in this inhouse"
+                            });
+                        }, 0);
+
+                        return deferred.promise;
+                    }
+                }
+            }
+
             return $http.get("/api/inhouse/player/" + playerName).then(function(response) {
                 return response.data;
             });
@@ -28,7 +78,7 @@
             return deferred.promise;
         }
         
-        function balanceTeams(blueTeam, redTeam) {
+        function balanceTeams() {
             var inhouseModel = {
                 blueTeam: blueTeam,
                 redTeam: redTeam
@@ -63,7 +113,7 @@
             });
         }
         
-        function swapPlayers(blueTeam, redTeam) {
+        function swapPlayers() {
             var deferred = $q.defer();
             
             $timeout(function() {
