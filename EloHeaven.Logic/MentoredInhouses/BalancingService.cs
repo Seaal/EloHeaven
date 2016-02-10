@@ -11,6 +11,11 @@ namespace EloHeaven.Logic.MentoredInhouses
     {
         public int GetRating(LeagueSummoner summoner)
         {
+            if (summoner.Level < 30)
+            {
+                return 250;
+            }
+
             int rating;
 
             switch (summoner.Tier)

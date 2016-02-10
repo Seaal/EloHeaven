@@ -17,6 +17,19 @@ namespace EloHeaven.Tests.MentoredInhouses
         }
 
         [Test]
+        public void Under_Level_30_Should_Return_250_Rating()
+        {
+            LeagueSummoner summoner = new LeagueSummoner()
+            {
+                Level = 25
+            };
+
+            int rating = _balancingService.GetRating(summoner);
+
+            rating.Should().Be(250);
+        }
+
+        [Test]
         public void TestUnrankedRating()
         {
             LeagueSummoner summoner = GetSummonerHelper("Unranked", "", 0);
@@ -152,7 +165,8 @@ namespace EloHeaven.Tests.MentoredInhouses
             {
                 Tier = tier,
                 Division = division,
-                LeaguePoints = lp
+                LeaguePoints = lp,
+                Level = 30
             };
 
             return summoner;
