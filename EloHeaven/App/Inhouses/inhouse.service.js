@@ -44,8 +44,8 @@
             var numDupes = 0;
 
             for (var i = 0; i < maxNumberOfPlayersPerTeam; i++) {
-                if (blueTeam[i].name.toLowerCase().replace(" ", "") === playerName.toLowerCase().replace(" ", "") ||
-                    redTeam[i].name.toLowerCase().replace(" ", "") === playerName.toLowerCase().replace(" ", "")) {
+                if (blueTeam[i].name.toLowerCase().replace(new RegExp(" ", "g"), "") === playerName.toLowerCase().replace(new RegExp(" ", "g"), "") ||
+                    redTeam[i].name.toLowerCase().replace(new RegExp(" ", "g"), "") === playerName.toLowerCase().replace(new RegExp(" ", "g"), "")) {
 
                     numDupes++;
 
@@ -54,7 +54,7 @@
 
                         $timeout(function () {
                             deferred.reject({
-                                message: "Player already exists in this inhouse"
+                                message: "Player already exists"
                             });
                         }, 0);
 
