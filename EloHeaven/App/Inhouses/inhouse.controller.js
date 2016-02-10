@@ -7,14 +7,15 @@
     function InhouseController($scope, inhouseService) {
         var vm = this;
         
-        vm.playersPerTeam = 5;
         vm.blueTeam = [];
         vm.redTeam = [];
         vm.balanceTeams = balanceTeams;
         vm.cancelSwap = cancelSwap;
         vm.swapPlayers = swapPlayers;
-        vm.allConfirmed = false;
+        vm.numPlayersConfirmed = 0;
         vm.swapping = false;
+        vm.ratingDifference = 0;
+        vm.balanced = false;
         
         activate();
         
@@ -35,22 +36,26 @@
         function balanceTeams() {
             inhouseService.balanceTeams().then(function (balanceInfo) {
                 vm.swapping = balanceInfo.hasSwaps;
+                vm.balanced = !balanceInfo.hasSwaps;
+                vm.ratingDifference = balanceInfo.ratingDifference;
             });          
         }
         
         function swapPlayers() {
-            inhouseService.swapPlayers().then(function (swaps) {
+            inhouseService.swapPlayers().then(function() {
                 vm.swapping = false;
-                vm.allConfirmed = true;
+                vm.balanced = true;
+                vm.numPlayersConfirmed = 10;
             });
         }
         
         function cancelSwap() {
-            for(var i=0; i< vm.playersPerTeam; i++) {
+            for(var i=0; i < 5; i++) {
                 vm.blueTeam[i].status = "confirmed";
                 vm.redTeam[i].status = "confirmed";
-                vm.swapping = false;
             }
+
+            vm.swapping = false;
         }
 
         function watchNoPlayersConfirmed(otherTeam) {
@@ -73,7 +78,11 @@
                     }
                 }
 
-                vm.allConfirmed = playersConfirmed == vm.playersPerTeam * 2;
+                vm.numPlayersConfirmed = playersConfirmed;
+
+                if (playersConfirmed < 10 && vm.balanced) {
+                    vm.balanced = false;
+                }
             }
 
             return watchFunction;

@@ -451,3 +451,9 @@ textarea.resize-vertical {
 .team-blue {
     color: #2747e8;
 }
+
+.alert-sm {
+    margin-bottom: 5px;
+    padding: 5px;
+    display: inline-block;
+}

@@ -13,7 +13,15 @@
     </div>
 </div>
 
-<button class="btn btn-primary center-block" ng-disabled="!inhouse.allConfirmed" ng-hide="inhouse.swapping" ng-click="inhouse.balanceTeams();">Balance Teams</button>
+<div class="text-center">
+    <div class="alert alert-sm alert-success" ng-show="inhouse.balanced"><i class="fa fa-lg fa-check"></i> The inhouse is balanced and ready to start! LP difference between the two teams: {{inhouse.ratingDifference}}</div>
+    <div class="alert alert-sm alert-danger" ng-show="inhouse.numPlayersConfirmed < 10 && !inhouse.swapping"><i class="fa fa-lg fa-remove"></i> {{10 - inhouse.numPlayersConfirmed}} more players required to balance this inhouse.</div>
+    <div class="alert alert-sm alert-warning" ng-show="inhouse.numPlayersConfirmed == 10 && !inhouse.balanced"><i class="fa fa-lg fa-users"></i> 10 players entered, the inhouse now needs balancing.</div>
+    <div class="alert alert-sm alert-warning" ng-show="inhouse.swapping"><i class="fa fa-lg fa-random"></i> Swaps are in progress. Hit "Swap Players" or "Cancel" to confirm your choice.</div>
+</div>
+
+<button class="btn btn-primary center-block" ng-disabled="inhouse.numPlayersConfirmed < 10 || inhouse.balanced" ng-hide="inhouse.swapping" ng-click="inhouse.balanceTeams();">Balance Teams</button>
+
 <div class="text-center" ng-show="inhouse.swapping">
     <button class="btn btn-success" ng-click="inhouse.swapPlayers();">Swap Players</button>
     <button class="btn btn-danger" ng-click="inhouse.cancelSwap();">Cancel</button>
