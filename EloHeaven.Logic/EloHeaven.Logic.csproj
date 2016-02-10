@@ -34,6 +34,10 @@
       <HintPath>..\packages\Combinatorics.1.0.3.2\lib\net40\Combinatorics.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.2.1\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -59,7 +63,6 @@
     <Compile Include="LeagueApi\DTOs\SummonerDTO.cs" />
     <Compile Include="LeagueApi\ILeagueApiService.cs" />
     <Compile Include="LeagueApi\ILeagueRequestService.cs" />
-    <Compile Include="LeagueApi\LeagueApiKey.cs" />
     <Compile Include="LeagueApi\LeagueApiService.cs" />
     <Compile Include="LeagueApi\LeagueRequestService.cs" />
     <Compile Include="LeagueApi\LeagueSummoner.cs" />

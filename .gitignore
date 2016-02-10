@@ -279,3 +279,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Elo Heaven Specific
+
+# Hide sensitive settings away from GitHub
+settings.config

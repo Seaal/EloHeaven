@@ -10,6 +10,7 @@ using EloHeaven.Infrastructure.Exceptions;
 using EloHeaven.Infrastructure.Extensions;
 using EloHeaven.Logic.Common;
 using EloHeaven.Logic.LeagueApi.DTOs;
+using Microsoft.Azure;
 
 namespace EloHeaven.Logic.LeagueApi
 {
@@ -28,7 +29,7 @@ namespace EloHeaven.Logic.LeagueApi
         {
             string resource = GetLeagueResourceUri("v1.4/summoner/by-name/" + summonerName);
 
-            SummonerDTO summonerDto = Get<SummonerDTO>(resource, () => GetSummoner(summonerName));
+            SummonerDTO summonerDto = Get(resource, () => GetSummoner(summonerName));
 
             if (summonerDto == null)
             {
@@ -42,13 +43,13 @@ namespace EloHeaven.Logic.LeagueApi
         {
             string resource = GetLeagueResourceUri("v2.5/league/by-summoner/" + summonerId + "/entry");
 
-            return Get<ICollection<LeagueDTO>>(resource, () => GetLeagues(summonerId));
+            return Get(resource, () => GetLeagues(summonerId));
         }
 
         private string GetLeagueResourceUri(string resource)
         {
-            string apiKeyDeliminater = resource.Contains('?') ? "&" : "?";
-            return _riotApi + resource + apiKeyDeliminater + LeagueApiKey.Key;
+            string apiKeyDeliminater = resource.Contains('?') ? "&api_key=" : "?api_key=";
+            return _riotApi + resource + apiKeyDeliminater + CloudConfigurationManager.GetSetting("RiotApiKey");
         }
 
         private T Get<T>(string resource, Func<T> retryFunc)
