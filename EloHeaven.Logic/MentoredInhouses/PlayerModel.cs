@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int Level { get; set; }
         public string Rank { get; set; }
         public int Rating { get; set; }
         public string Region { get; set; }

@@ -14,7 +14,8 @@
             <button class="icon-button status-icon" ng-show="card.player.status == 'confirmed'" ng-click="card.removePlayer(card.player);"><i class="fa fa-close"></i></button>
             <div class="information">
                 <h3>{{card.player.name}}</h3>
-                <span class="bold">{{card.player.rank}}</span>
+                <span class="bold" ng-hide="card.player.level < 30">{{card.player.rank}}</span>
+                <span class="bold text-warning" ng-show="card.player.level < 30">Level {{card.player.level}}</span>
             </div>
         </div>
     </div>

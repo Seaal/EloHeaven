@@ -23,7 +23,6 @@
             
             vm.validatePlayer = validatePlayer;
             vm.removePlayer = removePlayer;
-            vm.confirmedSummoner = {};
             vm.errorMessage = "";
             
             var lastSearch = "";
@@ -48,6 +47,7 @@
                     vm.player.rating = player.rating;
                     vm.player.region = player.region;
                     vm.player.status = player.status;
+                    vm.player.level = player.level;
                 }, function (error) {
                     if (error.status == 404) {
                         vm.errorMessage = "Player could not be found.";

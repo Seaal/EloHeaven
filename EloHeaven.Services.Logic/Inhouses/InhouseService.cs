@@ -27,6 +27,7 @@ namespace EloHeaven.Services.Logic.Inhouses
             {
                 Id = (int) summoner.Id,
                 Name = summoner.Name,
+                Level = summoner.Level,
                 Rank = summoner.Tier + " " + summoner.Division,
                 Rating = _balancingService.GetRating(summoner),
                 Region = "NA",
