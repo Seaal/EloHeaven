@@ -9,13 +9,14 @@ using System.Web.Routing;
 
 namespace EloHeaven
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             GlobalConfiguration.Configure(DependencyInjectionConfig.Register);
+            GlobalConfiguration.Configure(AppInsightsConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
