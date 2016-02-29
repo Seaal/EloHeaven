@@ -4,7 +4,7 @@ Elo Heaven is a League of Legends community focused on helping players improve t
 
 Elo Heaven is currently in extremely early stages of development and will initially be focused on providing support for our "Mentored Inhouses".
 
-Elo Heaven currently targets .NET4.5.2 and is built using MVC5, WebAPI2, AngularJS and Bootstrap, with a view to keep up to date with the latest versions when applicable.
+Elo Heaven currently targets .NET4.6.1 and is built using MVC5, WebAPI2, AngularJS and Bootstrap, with a view to keep up to date with the latest versions when applicable.
 
 ## Getting Started with helping out
 
