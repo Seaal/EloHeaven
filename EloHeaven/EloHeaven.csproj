@@ -248,6 +248,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InhouseController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RegionController.cs" />
+    <Compile Include="Controllers\SummonerController.cs" />
     <Compile Include="Filters\NotFoundFilterAttribute.cs" />
     <Compile Include="Filters\ServiceUnavailableFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -260,6 +262,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Account\account.controller.js" />
+    <Content Include="App\Account\account.service.js" />
+    <Content Include="App\Account\account.view.html" />
+    <Content Include="App\Account\leagueAccounts.directive.js" />
+    <Content Include="App\Account\leagueAccounts.template.html" />
     <Content Include="App\Core\core.module.js" />
     <Content Include="App\Core\leagueApi.service.js" />
     <Content Include="App\Core\leaguePicture.directive.js" />
@@ -306,6 +313,7 @@
     <Content Include="App\notificationsList.html" />
     <Content Include="App\profilePicture.directive.js" />
     <Content Include="App\profilePicture.html" />
+    <Content Include="App\region.service.js" />
     <Content Include="App\Shared\seaal.constants.js" />
     <Content Include="App\Shared\seaal.module.js" />
     <Content Include="App\Shared\selectall.directive.js" />
@@ -1227,11 +1235,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EloHeaven.Data\EloHeaven.Data.csproj">
+      <Project>{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}</Project>
+      <Name>EloHeaven.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EloHeaven.Infrastructure\EloHeaven.Infrastructure.csproj">
       <Project>{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}</Project>
       <Name>EloHeaven.Infrastructure</Name>

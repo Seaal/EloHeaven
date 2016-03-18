@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}</ProjectGuid>
+    <ProjectGuid>{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EloHeaven.Services.Logic</RootNamespace>
-    <AssemblyName>EloHeaven.Services.Logic</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>EloHeaven.Data</RootNamespace>
+    <AssemblyName>EloHeaven.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,28 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\ISummonerService.cs" />
-    <Compile Include="Account\SummonerModel.cs" />
-    <Compile Include="Account\SummonerService.cs" />
-    <Compile Include="Inhouses\IInhouseService.cs" />
-    <Compile Include="Inhouses\InhouseService.cs" />
-    <Compile Include="Regions\IRegionService.cs" />
+    <Compile Include="IRegionRepository.cs" />
+    <Compile Include="ISummonerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Regions\RegionModel.cs" />
-    <Compile Include="Regions\RegionService.cs" />
+    <Compile Include="RegionRepository.cs" />
+    <Compile Include="SummonerRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EloHeaven.Data\EloHeaven.Data.csproj">
-      <Project>{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}</Project>
-      <Name>EloHeaven.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EloHeaven.Entities\EloHeaven.Entities.csproj">
       <Project>{2B5A6873-E394-4C03-917D-8629EBCBC6D0}</Project>
       <Name>EloHeaven.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EloHeaven.Logic\EloHeaven.Logic.csproj">
-      <Project>{26F73090-0650-4ADE-A77D-FFE44ED4B20D}</Project>
-      <Name>EloHeaven.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

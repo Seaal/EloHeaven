@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using EloHeaven.Data;
 using EloHeaven.Logic.Common;
 using EloHeaven.Services.Logic.Inhouses;
 using SimpleInjector;
@@ -22,9 +23,11 @@ namespace EloHeaven
 
             Assembly logicAssembly = typeof (JsonClient).Assembly;
             Assembly servicesLogicAssembly = typeof (InhouseService).Assembly;
+            Assembly dataAssembly = typeof (SummonerRepository).Assembly;
 
             RegisterServices(container, logicAssembly, Lifestyle.Transient);
             RegisterServices(container, servicesLogicAssembly, Lifestyle.Transient);
+            RegisterServices(container, dataAssembly, Lifestyle.Transient);
 
             container.Verify();
 

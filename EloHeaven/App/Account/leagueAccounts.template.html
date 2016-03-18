@@ -1,0 +1,33 @@
+﻿<h2>League of Legends Accounts</h2>
+
+<form class="form-horizontal" ng-submit="accounts.addSummoner(accounts.summonerName, accounts.summonerRegion)">
+    <div class="form-group">
+        <label for="summonerName" class="col-md-2 control-label">Summoner Name</label>
+
+        <div class="col-md-4">
+            <input class="form-control" id="summonerName" placeholder="Account Name..." ng-model="accounts.summonerName"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="region" class="col-md-2 control-label">Region</label>
+
+        <div class="col-md-4">
+            <select class="form-control" id="region" ng-options="region.id as region.name for region in accounts.regions" ng-model="accounts.summonerRegion"></select>
+        </div>
+    </div>
+
+    <div ng-show="accounts.errors.length > 0" class="alert alert-danger">
+        <ul>
+            <li ng-repeat="error in accounts.errors">{{error.message}}</li>
+        </ul>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-4">
+            <input type="submit" class="btn btn-primary" value="Add Summoner" />
+        </div>
+    </div>
+</form>
+
+<eh-summoner-list summoners="accounts.summoners"></eh-summoner-list>
