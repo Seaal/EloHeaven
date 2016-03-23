@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using EloHeaven.Logic.LeagueApi.DTOs;
-using EloHeaven.Services.Logic.Account;
+using EloHeaven.Services.Logic.Account.Summoners;
 
 namespace EloHeaven.Controllers
 {
@@ -23,6 +20,19 @@ namespace EloHeaven.Controllers
         public IEnumerable<SummonerModel> GetAll(Guid userId)
         {
             return _summonerService.GetAllForUser(userId);
-        } 
+        }
+
+        [Route("")]
+        public SummonerConfirmationModel Post(Guid userId, SummonerModel summonerModel)
+        {
+            return _summonerService.Add(userId, summonerModel);
+        }
+
+        [Route("{summonerId}/confirmation")]
+        [HttpPost]
+        public void Confirm(Guid userId, int summonerId)
+        {
+            _summonerService.Confirm(userId, summonerId);
+        }
     }
 }

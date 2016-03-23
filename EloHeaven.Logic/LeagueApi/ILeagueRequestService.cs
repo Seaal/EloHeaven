@@ -9,7 +9,8 @@ namespace EloHeaven.Logic.LeagueApi
 {
     public interface ILeagueRequestService
     {
-        SummonerDTO GetSummoner(string summonerName);
-        ICollection<LeagueDTO> GetLeagues(long summonerId);
+        SummonerDTO GetSummoner(string region, string summonerName);
+        IEnumerable<LeagueDTO> GetLeagues(string region, long summonerId);
+        RunepagesDTO GetRunepages(string region, long summonerId);
     }
 }

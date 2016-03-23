@@ -21,7 +21,7 @@ namespace EloHeaven.Services.Logic.Inhouses
 
         public PlayerModel GetPlayer(string playerName)
         {
-            LeagueSummoner summoner = _leagueApiService.GetSummoner(playerName);
+            LeagueSummoner summoner = _leagueApiService.GetSummoner("na", playerName);
 
             return new PlayerModel()
             {

@@ -10,5 +10,8 @@ namespace EloHeaven.Data
     public interface ISummonerRepository
     {
         IEnumerable<Summoner> GetForUser(Guid userId);
+        void Add(Summoner summoner);
+        Summoner Get(int summonerId);
+        void Update(Summoner summoner);
     }
 }

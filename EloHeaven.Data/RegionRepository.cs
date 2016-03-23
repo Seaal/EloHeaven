@@ -18,5 +18,10 @@ namespace EloHeaven.Data
                 new Region() {Id = 3, LeagueApiId = "EUNE", LongName = "Europe - North & East"},
             };
         }
+
+        public Region GetFromLeagueId(string regionId)
+        {
+            return new Region() {Id = 1, LeagueApiId = "NA", LongName = "North America"};
+        }
     }
 }

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EloHeaven.Services.Logic.Account
+namespace EloHeaven.Logic.LeagueApi.DTOs
 {
-    public class SummonerModel
+    public class RunepageDTO
     {
         public string Name { get; set; }
-        public string Region { get; set; }
     }
 }

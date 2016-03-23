@@ -10,5 +10,6 @@ namespace EloHeaven.Data
     public interface IRegionRepository
     {
         IEnumerable<Region> GetAll();
+        Region GetFromLeagueId(string regionId);
     }
 }
