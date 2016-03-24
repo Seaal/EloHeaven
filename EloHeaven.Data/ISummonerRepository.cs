@@ -12,6 +12,7 @@ namespace EloHeaven.Data
         IEnumerable<Summoner> GetForUser(Guid userId);
         void Add(Summoner summoner);
         Summoner Get(int summonerId);
+        Summoner Get(string name, string region);
         void Update(Summoner summoner);
     }
 }

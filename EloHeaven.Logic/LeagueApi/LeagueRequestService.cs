@@ -18,7 +18,7 @@ namespace EloHeaven.Logic.LeagueApi
     {
         private readonly IJsonClient _jsonClient;
 
-        private readonly string _riotApi = "https://na.api.pvp.net/api/lol/";
+        private readonly string _riotApi = ".api.pvp.net/api/lol/";
 
         public LeagueRequestService(IJsonClient jsonClient)
         {
@@ -56,7 +56,7 @@ namespace EloHeaven.Logic.LeagueApi
         private string GetLeagueResourceUri(string region, string resource)
         {
             string apiKeyDelimiter = resource.Contains('?') ? "&api_key=" : "?api_key=";
-            return _riotApi + region + "/" + resource + apiKeyDelimiter + CloudConfigurationManager.GetSetting("RiotApiKey");
+            return "https://" + region.ToLowerInvariant() + _riotApi + region.ToLowerInvariant() + "/" + resource + apiKeyDelimiter + CloudConfigurationManager.GetSetting("RiotApiKey");
         }
 
         private T Get<T>(string resource, Func<T> retryFunc)

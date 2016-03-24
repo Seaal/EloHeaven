@@ -250,6 +250,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegionController.cs" />
     <Compile Include="Controllers\SummonerController.cs" />
+    <Compile Include="Filters\BadRequestFilterAttribute.cs" />
     <Compile Include="Filters\NotFoundFilterAttribute.cs" />
     <Compile Include="Filters\ServiceUnavailableFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -265,8 +266,8 @@
     <Content Include="App\Account\account.controller.js" />
     <Content Include="App\Account\account.service.js" />
     <Content Include="App\Account\account.view.html" />
-    <Content Include="App\Account\leagueAccounts.directive.js" />
-    <Content Include="App\Account\leagueAccounts.template.html" />
+    <Content Include="App\Account\Summoners\leagueAccounts.directive.js" />
+    <Content Include="App\Account\Summoners\leagueAccounts.template.html" />
     <Content Include="App\Core\core.module.js" />
     <Content Include="App\Core\leagueApi.service.js" />
     <Content Include="App\Core\leaguePicture.directive.js" />
@@ -296,8 +297,8 @@
     <Content Include="App\Mentors\Application\confirmation\confirmation.view.html" />
     <Content Include="App\Mentors\Application\summoners\addSummoners.controller.js" />
     <Content Include="App\Mentors\Application\summoners\addSummoners.view.html" />
-    <Content Include="App\Mentors\Application\summoners\confirmSummoner.controller.js" />
-    <Content Include="App\Mentors\Application\summoners\confirmSummoner.html" />
+    <Content Include="App\Account\Summoners\confirmSummoner.controller.js" />
+    <Content Include="App\Account\Summoners\confirmSummoner.html" />
     <Content Include="App\Mentors\Application\terms\terms.controller.js" />
     <Content Include="App\Mentors\Application\terms\terms.view.html" />
     <Content Include="App\Mentors\championList.directive.js" />
@@ -386,6 +387,8 @@
     <Content Include="images\shaco-48.jpg" />
     <Content Include="images\swain-48.jpg" />
     <Content Include="images\unknown-summoner.png" />
+    <Content Include="Scripts\ui-bootstrap-modal-tpls-1.2.5.js" />
+    <Content Include="Scripts\ui-bootstrap-modal-tpls-1.2.5.min.js" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1184,7 +1187,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\selectize.js" />
-    <Content Include="Scripts\ui-bootstrap-modal-tpls-0.13.0.js" />
     <Content Include="Scripts\ui-sortable.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />

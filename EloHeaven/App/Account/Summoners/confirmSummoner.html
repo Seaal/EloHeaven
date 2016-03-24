@@ -7,7 +7,6 @@
 	
 	<p><strong>Name:</strong> {{vm.summoner.name}}</p>
 	<p><strong>Region:</strong> {{vm.summoner.region}}</p>
-	<p><strong>Rank:</strong> {{vm.summoner.rank}}</p>
 	
 	<h4>Runepage Code</h4>
 	
@@ -16,9 +15,13 @@
 	</p>
 	
 	<div seaal-selectall class="well runepage-item runepage-code">{{vm.code}}</div>
-	<button ng-click="vm.confirm(vm.summoner, vm.code)" class="btn btn-success runepage-item runepage-submit">Confirm</button>
-	
-	<p style="font-style: italic;">Note: this is temporary, once your League Account has been confirmed you may switch your runepage name back.</P>
+	<button ng-click="vm.confirm()" class="btn btn-success runepage-item runepage-submit">Confirm</button>
+
+    <div class="alert alert-danger" ng-show="vm.error">
+        <b>Error:</b> {{vm.error}}
+    </div>
+
+    <p style="font-style: italic;">Note: this is temporary, once your League Account has been confirmed you may switch your runepage name back.</P>
 </div>
 
 <div style="text-align: left;" class="modal-footer">

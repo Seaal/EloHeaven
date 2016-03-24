@@ -46,6 +46,7 @@
     <Compile Include="Account\Summoners\SummonerModel.cs" />
     <Compile Include="Account\Summoners\SummonerModelMapper.cs" />
     <Compile Include="Account\Summoners\SummonerService.cs" />
+    <Compile Include="ErrorModel.cs" />
     <Compile Include="IModelMapper.cs" />
     <Compile Include="Inhouses\IInhouseService.cs" />
     <Compile Include="Inhouses\InhouseService.cs" />

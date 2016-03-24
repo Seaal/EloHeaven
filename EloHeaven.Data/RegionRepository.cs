@@ -13,15 +13,15 @@ namespace EloHeaven.Data
         {
             return new[]
             {
-                new Region() {Id = 1, LeagueApiId = "NA", LongName = "North America"},
-                new Region() {Id = 2, LeagueApiId = "EUW1", LongName = "Europe - West"},
-                new Region() {Id = 3, LeagueApiId = "EUNE", LongName = "Europe - North & East"},
+                new Region() {Id = 1, LeagueApiId = "na", LongName = "North America"},
+                new Region() {Id = 2, LeagueApiId = "euw", LongName = "Europe - West"},
+                new Region() {Id = 3, LeagueApiId = "eune", LongName = "Europe - North & East"},
             };
         }
 
         public Region GetFromLeagueId(string regionId)
         {
-            return new Region() {Id = 1, LeagueApiId = "NA", LongName = "North America"};
+            return new Region() {Id = 1, LeagueApiId = "na", LongName = "North America"};
         }
     }
 }

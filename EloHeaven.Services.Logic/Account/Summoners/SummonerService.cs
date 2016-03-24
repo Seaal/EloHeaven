@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EloHeaven.Data;
 using EloHeaven.Entities;
 using EloHeaven.Infrastructure.Exceptions;
+using EloHeaven.Logic;
 using EloHeaven.Logic.LeagueApi;
 
 namespace EloHeaven.Services.Logic.Account.Summoners
@@ -15,14 +14,18 @@ namespace EloHeaven.Services.Logic.Account.Summoners
         private readonly ISummonerRepository _summonerRepository;
         private readonly IRegionRepository _regionRepository;
         private readonly ILeagueApiService _apiService;
-        private readonly IModelMapper<Summoner, SummonerModel> _summonerModelMapper; 
+        private readonly IModelMapper<Summoner, SummonerModel> _summonerModelMapper;
+        private readonly ISecureTokenGenerator _secureTokenGenerator;
 
-        public SummonerService(ISummonerRepository summonerRepository, ILeagueApiService apiService, IRegionRepository regionRepository, IModelMapper<Summoner, SummonerModel> summonerModelMapper)
+        private readonly int _confirmationTokenLength = 8;
+
+        public SummonerService(ISummonerRepository summonerRepository, ILeagueApiService apiService, IRegionRepository regionRepository, IModelMapper<Summoner, SummonerModel> summonerModelMapper, ISecureTokenGenerator secureTokenGenerator)
         {
             _summonerRepository = summonerRepository;
             _apiService = apiService;
             _regionRepository = regionRepository;
             _summonerModelMapper = summonerModelMapper;
+            _secureTokenGenerator = secureTokenGenerator;
         }
 
         public IEnumerable<SummonerModel> GetAllForUser(Guid userId)
@@ -34,9 +37,16 @@ namespace EloHeaven.Services.Logic.Account.Summoners
 
         public SummonerConfirmationModel Add(Guid userId, SummonerModel summonerModel)
         {
+            Summoner existingSummoner = _summonerRepository.Get(summonerModel.Name, summonerModel.Region);
+
+            if (existingSummoner.IsConfirmed)
+            {
+                throw new BadRequestException("This League of Legends account has already been confirmed by somebody else.");
+            }
+
             LeagueSummoner leagueSummoner = _apiService.GetSummoner(summonerModel.Region, summonerModel.Name);
 
-            string confirmationCode = "test";
+            string confirmationCode = _secureTokenGenerator.GenerateToken(_confirmationTokenLength);
 
             Summoner summoner = new Summoner()
             {
@@ -63,16 +73,18 @@ namespace EloHeaven.Services.Logic.Account.Summoners
 
             if (summoner.IsConfirmed)
             {
-                throw new BadRequestException("This summoner has already been confirmed");
+                throw new BadRequestException("This League of Legends account has already been confirmed.");
             }
 
             bool confirmed = _apiService.ConfirmSummoner(summoner);
 
-            if (confirmed)
+            if (!confirmed)
             {
-                summoner.IsConfirmed = true;
-                summoner.ConfirmationCode = null;
+                throw new BadRequestException("No runepage names matched the given code.");
             }
+
+            summoner.IsConfirmed = true;
+            summoner.ConfirmationCode = null;
 
             _summonerRepository.Update(summoner);
         }

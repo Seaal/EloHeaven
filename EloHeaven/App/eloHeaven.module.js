@@ -10,7 +10,8 @@
             "seaal",
             "ngAnimate",
             "toastr",
-            "angularMoment"
+            "angularMoment",
+            "ui.bootstrap"
         ]);
 
 })();

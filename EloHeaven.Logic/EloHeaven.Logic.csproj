@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISecureTokenGenerator.cs" />
     <Compile Include="LeagueApi\DTOs\RunepageDTO.cs" />
     <Compile Include="LeagueApi\DTOs\RunepagesDTO.cs" />
     <Compile Include="MentoredInhouses\BalancingService.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="MentoredInhouses\PlayerModel.cs" />
     <Compile Include="MentoredInhouses\SwapsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecureTokenGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EloHeaven.Entities\EloHeaven.Entities.csproj">

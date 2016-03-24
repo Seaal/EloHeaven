@@ -6,18 +6,17 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http.Filters;
 using EloHeaven.Infrastructure.Exceptions;
-using EloHeaven.Logic.LeagueApi.DTOs;
 using EloHeaven.Services.Logic;
 
 namespace EloHeaven.Filters
 {
-    public class ServiceUnavailableFilterAttribute : ExceptionFilterAttribute
+    public class BadRequestFilterAttribute : ExceptionFilterAttribute
     {
         public override void OnException(HttpActionExecutedContext context)
         {
-            if (context.Exception is ServiceUnavailableException)
+            if (context.Exception is BadRequestException)
             {
-                context.Response = context.Request.CreateResponse(HttpStatusCode.ServiceUnavailable, new ErrorModel(context.Exception.Message));
+                context.Response = context.Request.CreateResponse(HttpStatusCode.BadRequest, new ErrorModel(context.Exception.Message));
             }
         }
     }
