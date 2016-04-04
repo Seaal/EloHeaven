@@ -15,7 +15,7 @@
 		function confirm() {
 		    vm.error = "";
 
-		    accountService.confirmSummoner("581597B2-6D99-4274-8411-0184BE889292", confirmSummoner.summoner.id).then(function () {
+		    accountService.confirmSummoner(1, confirmSummoner.summoner.id).then(function () {
 		        $scope.$close(confirmSummoner.summoner);
 		    }, function(response) {
 		        vm.error = response.data.message;

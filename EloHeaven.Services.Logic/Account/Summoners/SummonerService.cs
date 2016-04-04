@@ -28,14 +28,14 @@ namespace EloHeaven.Services.Logic.Account.Summoners
             _secureTokenGenerator = secureTokenGenerator;
         }
 
-        public IEnumerable<SummonerModel> GetAllForUser(Guid userId)
+        public IEnumerable<SummonerModel> GetAllForUser(int userId)
         {
             IEnumerable<Summoner> summoners = _summonerRepository.GetForUser(userId);
 
             return summoners.Select(_summonerModelMapper.ToModel).ToList();
         }
 
-        public SummonerConfirmationModel Add(Guid userId, SummonerModel summonerModel)
+        public SummonerConfirmationModel Add(int userId, SummonerModel summonerModel)
         {
             Summoner existingSummoner = _summonerRepository.Get(summonerModel.Name, summonerModel.Region);
 
@@ -67,7 +67,7 @@ namespace EloHeaven.Services.Logic.Account.Summoners
             };
         }
 
-        public void Confirm(Guid userId, int summonerId)
+        public void Confirm(int userId, int summonerId)
         {
             Summoner summoner = _summonerRepository.Get(summonerId);
 

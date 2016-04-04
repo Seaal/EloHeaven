@@ -18,7 +18,7 @@
                 controller: "accountController as account",
                 resolve: {
                     summoners: function(accountService) {
-                        return accountService.getSummoners("581597B2-6D99-4274-8411-0184BE889292");
+                        return accountService.getSummoners(1);
                     },
                     regions: function(regionService) {
                         return regionService.getAll();

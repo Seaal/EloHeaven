@@ -17,20 +17,20 @@ namespace EloHeaven.Controllers
         }
 
         [Route("")]
-        public IEnumerable<SummonerModel> GetAll(Guid userId)
+        public IEnumerable<SummonerModel> GetAll(int userId)
         {
             return _summonerService.GetAllForUser(userId);
         }
 
         [Route("")]
-        public SummonerConfirmationModel Post(Guid userId, SummonerModel summonerModel)
+        public SummonerConfirmationModel Post(int userId, SummonerModel summonerModel)
         {
             return _summonerService.Add(userId, summonerModel);
         }
 
         [Route("{summonerId}/confirmation")]
         [HttpPost]
-        public void Confirm(Guid userId, int summonerId)
+        public void Confirm(int userId, int summonerId)
         {
             _summonerService.Confirm(userId, summonerId);
         }

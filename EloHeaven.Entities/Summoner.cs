@@ -10,7 +10,7 @@ namespace EloHeaven.Entities
     {
         public int Id { get; set; }
         public long LeagueApiId { get; set; }
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public int RegionId { get; set; }
         public string Name { get; set; }
         public bool IsConfirmed { get; set; }

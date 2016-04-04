@@ -9,7 +9,7 @@ namespace EloHeaven.Data
 {
     public interface ISummonerRepository
     {
-        IEnumerable<Summoner> GetForUser(Guid userId);
+        IEnumerable<Summoner> GetForUser(int userId);
         void Add(Summoner summoner);
         Summoner Get(int summonerId);
         Summoner Get(string name, string region);

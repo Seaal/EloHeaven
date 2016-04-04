@@ -45,7 +45,7 @@
                 return;
             }
 
-            accountService.addSummoner("581597B2-6D99-4274-8411-0184BE889292", { name: vm.summonerName, region: vm.summonerRegion }).then(function(confirmSummoner) {
+            accountService.addSummoner(1, { name: vm.summonerName, region: vm.summonerRegion }).then(function(confirmSummoner) {
                 var confirmModal = $uibModal.open({
                     templateUrl: "App/Account/Summoners/confirmSummoner.html",
                     controller: "confirmSummonerController",
