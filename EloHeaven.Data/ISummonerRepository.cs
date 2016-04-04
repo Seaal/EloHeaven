@@ -14,5 +14,6 @@ namespace EloHeaven.Data
         Summoner Get(int summonerId);
         Summoner Get(string name, string region);
         void Update(Summoner summoner);
+        void Delete(Summoner summoner);
     }
 }

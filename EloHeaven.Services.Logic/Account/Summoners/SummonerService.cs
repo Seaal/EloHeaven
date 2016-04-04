@@ -88,5 +88,12 @@ namespace EloHeaven.Services.Logic.Account.Summoners
 
             _summonerRepository.Update(summoner);
         }
+
+        public void Delete(int userId, int summonerId)
+        {
+            Summoner summoner = _summonerRepository.Get(summonerId);
+
+            _summonerRepository.Delete(summoner);
+        }
     }
 }

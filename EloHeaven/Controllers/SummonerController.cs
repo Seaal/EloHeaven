@@ -34,5 +34,11 @@ namespace EloHeaven.Controllers
         {
             _summonerService.Confirm(userId, summonerId);
         }
+
+        [Route("{summonerId}")]
+        public void Delete(int userId, int summonerId)
+        {
+            _summonerService.Delete(userId, summonerId);
+        }
     }
 }

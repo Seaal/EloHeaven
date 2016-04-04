@@ -38,5 +38,9 @@ namespace EloHeaven.Data
         public void Update(Summoner summoner)
         {
         }
+
+        public void Delete(Summoner summoner)
+        {
+        }
     }
 }
