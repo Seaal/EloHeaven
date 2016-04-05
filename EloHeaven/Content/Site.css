@@ -35,6 +35,18 @@ a {
     position: relative;
 }
 
+    .card h3 {
+        margin-top: 0;
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+    .card .information {
+        vertical-align: top;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
 .mentor-card {
     cursor: pointer;
 }
@@ -92,20 +104,11 @@ a {
 }
     
     .player-card .information {
-        vertical-align: top;
-        display: inline-block;
-        margin-left: 10px;
         width: 190px;
     }
     
         .player-card .information p {
             margin: 10px 0 0;
-        }
-        
-        .player-card .information h3 {
-            margin-top: 0;
-            font-weight: bold;
-            font-size: 22px;
         }
         
     .player-card .status-icon {
@@ -123,6 +126,33 @@ a {
     .team-right .player-card.swapping {
         margin-left: 0;
         margin-right: 60px;
+    }
+
+.summoner-card {
+    width: 375px;
+}
+
+    .summoner-card .summoner-information {
+        width: 190px;
+    }
+
+    .summoner-card .verified {
+        color: #2c7a52;
+        height: 22px;
+        line-height: 22px;
+        vertical-align: middle;
+    }
+
+    .summoner-card .information-right .summoner-remove {
+        margin-top: 5px;
+    }
+
+    .summoner-card .information h3 {
+        margin-bottom: 5px;
+    }
+
+    .summoner-card .information p {
+        margin-bottom: 0;
     }
 
 .image-group {
@@ -181,19 +211,14 @@ a {
     height: 64px;
 }
 
-.champion-image-medium {
+.image-small {
     width: 48px;
     height: 48px;
 }
 
-.image-small {
+.image-extra-small {
     width: 32px;
     height: 32px;
-}
-
-.image-extra-small {
-    width: 16px;
-    height: 16px;
 }
 
 .hidden-submit {
@@ -279,7 +304,6 @@ a {
 
 .summoner-list > li {
     list-style: none;
-    margin-bottom: 20px;
 }
 
 .summoner-list > li > span {
