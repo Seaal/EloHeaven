@@ -8,8 +8,8 @@
         var service = {
             getSummoners: getSummoners,
             addSummoner: addSummoner,
-            confirmSummoner: confirmSummoner,
-            getSummonerConfirmation: getSummonerConfirmation
+            verifySummoner: verifySummoner,
+            getSummonerVerification: getSummonerVerification
     };
 
         return service;
@@ -26,12 +26,12 @@
             });
         }
 
-        function confirmSummoner(userId, summonerId) {
-            return $http.post("/api/account/" + userId + "/summoner/" + summonerId + "/confirmation");
+        function verifySummoner(userId, summonerId) {
+            return $http.post("/api/account/" + userId + "/summoner/" + summonerId + "/verification");
         }
 
-        function getSummonerConfirmation(userId, summonerId) {
-            return $http.get("/api/account/" + userId + "/summoner/" + summonerId + "/confirmation").then(function(response) {
+        function getSummonerVerification(userId, summonerId) {
+            return $http.get("/api/account/" + userId + "/summoner/" + summonerId + "/verification").then(function(response) {
                 return response.data;
             });
         }

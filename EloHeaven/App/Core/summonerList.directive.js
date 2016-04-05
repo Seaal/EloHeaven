@@ -18,16 +18,16 @@
             return directive;
         });
 
-    function controller(accountService, confirmSummonerModalService) {
+    function controller(accountService, verifySummonerModalService) {
 
         var vm = this;
 
-        vm.confirmSummoner = confirmSummoner;
+        vm.verifySummoner = verifySummoner;
 
-        function confirmSummoner(summoner) {
-            accountService.getSummonerConfirmation(1, summoner.id).then(function(confirmationModel) {
-                confirmSummonerModalService.open(confirmationModel).then(function() {
-                    summoner.isVerified = true;
+        function verifySummoner(summoner) {
+            accountService.getSummonerVerification(1, summoner.id).then(function(confirmationModel) {
+                verifySummonerModalService.open(confirmationModel).then(function(newSummoner) {
+                    summoner.isVerified = newSummoner.isVerified;
                 });
             });
         }

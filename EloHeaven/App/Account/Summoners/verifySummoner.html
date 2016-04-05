@@ -1,0 +1,28 @@
+<div class="modal-header">
+	<h3>Verify Ownership of this League of Legends Account.</h3>
+</div>
+
+<div class="modal-body">
+	<h4>Account Details</h4>
+	
+	<p><strong>Name:</strong> {{vm.summoner.name}}</p>
+	<p><strong>Region:</strong> {{vm.summoner.region}}</p>
+	
+	<p>
+		To verify the League Account <strong>{{vm.summoner.name}}</strong> is yours, login to your League Account, rename one of your runepages to the following code and press Verify.
+	</p>
+	
+	<div seaal-selectall class="well runepage-item runepage-code">{{vm.code}}</div>
+	<button ng-click="vm.verify()" class="btn btn-success runepage-item runepage-submit">Verify</button>
+
+    <div class="alert alert-danger" ng-show="vm.error">
+        <b>Error:</b> {{vm.error}}
+    </div>
+
+    <p style="font-style: italic;">Note: this is temporary, once your League Account has been verified you may switch your runepage name back.</P>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-danger pull-left" ng-click="$dismiss()">Cancel</button>
+    <button class="btn btn-primary" ng-click="vm.verifyLater()">Verify Later...</button>
+</div>

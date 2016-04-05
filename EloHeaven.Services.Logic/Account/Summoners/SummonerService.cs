@@ -17,7 +17,7 @@ namespace EloHeaven.Services.Logic.Account.Summoners
         private readonly IModelMapper<Summoner, SummonerModel> _summonerModelMapper;
         private readonly ISecureTokenGenerator _secureTokenGenerator;
 
-        private readonly int _confirmationTokenLength = 8;
+        private readonly int _verificationTokenLength = 8;
 
         public SummonerService(ISummonerRepository summonerRepository, ILeagueApiService apiService, IRegionRepository regionRepository, IModelMapper<Summoner, SummonerModel> summonerModelMapper, ISecureTokenGenerator secureTokenGenerator)
         {
@@ -35,18 +35,18 @@ namespace EloHeaven.Services.Logic.Account.Summoners
             return summoners.Select(_summonerModelMapper.ToModel).ToList();
         }
 
-        public SummonerConfirmationModel Add(int userId, SummonerModel summonerModel)
+        public SummonerVerificationModel Add(int userId, SummonerModel summonerModel)
         {
             Summoner existingSummoner = _summonerRepository.Get(summonerModel.Name, summonerModel.Region);
 
-            if (existingSummoner.IsConfirmed)
+            if (existingSummoner.IsVerified)
             {
-                throw new BadRequestException("This League of Legends account has already been confirmed by somebody else.");
+                throw new BadRequestException("This League of Legends account has already been verified by somebody else.");
             }
 
             LeagueSummoner leagueSummoner = _apiService.GetSummoner(summonerModel.Region, summonerModel.Name);
 
-            string confirmationCode = _secureTokenGenerator.GenerateToken(_confirmationTokenLength);
+            string verificationCode = _secureTokenGenerator.GenerateToken(_verificationTokenLength);
 
             Summoner summoner = new Summoner()
             {
@@ -54,37 +54,37 @@ namespace EloHeaven.Services.Logic.Account.Summoners
                 Name = leagueSummoner.Name,
                 UserId = userId,
                 Region = _regionRepository.GetFromLeagueId(summonerModel.Region),
-                ConfirmationCode = confirmationCode,
-                IsConfirmed = false
+                VerificationCode = verificationCode,
+                IsVerified = false
             };
 
             _summonerRepository.Add(summoner);
 
-            return new SummonerConfirmationModel()
+            return new SummonerVerificationModel()
             {
-                Code = confirmationCode,
+                Code = verificationCode,
                 Summoner = _summonerModelMapper.ToModel(summoner)
             };
         }
 
-        public void Confirm(int userId, int summonerId)
+        public void Verify(int userId, int summonerId)
         {
             Summoner summoner = _summonerRepository.Get(summonerId);
 
-            if (summoner.IsConfirmed)
+            if (summoner.IsVerified)
             {
-                throw new BadRequestException("This League of Legends account has already been confirmed.");
+                throw new BadRequestException("This League of Legends account has already been verified.");
             }
 
-            bool confirmed = _apiService.ConfirmSummoner(summoner);
+            bool verified = _apiService.ConfirmSummoner(summoner);
 
-            if (!confirmed)
+            if (!verified)
             {
                 throw new BadRequestException("No runepage names matched the given code.");
             }
 
-            summoner.IsConfirmed = true;
-            summoner.ConfirmationCode = null;
+            summoner.IsVerified = true;
+            summoner.VerificationCode = null;
 
             _summonerRepository.Update(summoner);
         }
@@ -96,24 +96,24 @@ namespace EloHeaven.Services.Logic.Account.Summoners
             _summonerRepository.Delete(summoner);
         }
 
-        public SummonerConfirmationModel GetConfirmation(int userId, int summonerId)
+        public SummonerVerificationModel GetVerification(int userId, int summonerId)
         {
             Summoner summoner = _summonerRepository.Get(summonerId);
 
-            if (summoner.IsConfirmed)
+            if (summoner.IsVerified)
             {
-                throw new BadRequestException("This League of Legends account has already been confirmed.");
+                throw new BadRequestException("This League of Legends account has already been verified.");
             }
 
-            string confirmationCode = _secureTokenGenerator.GenerateToken(_confirmationTokenLength);
+            string verificationCode = _secureTokenGenerator.GenerateToken(_verificationTokenLength);
 
-            summoner.ConfirmationCode = confirmationCode;
+            summoner.VerificationCode = verificationCode;
 
             _summonerRepository.Update(summoner);
 
-            return new SummonerConfirmationModel()
+            return new SummonerVerificationModel()
             {
-                Code = confirmationCode,
+                Code = verificationCode,
                 Summoner = _summonerModelMapper.ToModel(summoner)
             };
         }

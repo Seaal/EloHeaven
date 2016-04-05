@@ -23,24 +23,24 @@ namespace EloHeaven.Controllers
         }
 
         [Route("")]
-        public SummonerConfirmationModel Post(int userId, SummonerModel summonerModel)
+        public SummonerVerificationModel Post(int userId, SummonerModel summonerModel)
         {
             return _summonerService.Add(userId, summonerModel);
         }
 
 
-        [Route("{summonerId}/confirmation")]
+        [Route("{summonerId}/verification")]
         [HttpGet]
-        public SummonerConfirmationModel GetConfirmation(int userId, int summonerId)
+        public SummonerVerificationModel GetVerification(int userId, int summonerId)
         {
-            return _summonerService.GetConfirmation(userId, summonerId);
+            return _summonerService.GetVerification(userId, summonerId);
         }
 
-        [Route("{summonerId}/confirmation")]
+        [Route("{summonerId}/verification")]
         [HttpPost]
-        public void Confirm(int userId, int summonerId)
+        public void Verify(int userId, int summonerId)
         {
-            _summonerService.Confirm(userId, summonerId);
+            _summonerService.Verify(userId, summonerId);
         }
 
         [Route("{summonerId}")]

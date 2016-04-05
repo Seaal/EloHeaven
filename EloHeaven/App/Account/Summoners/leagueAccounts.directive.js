@@ -20,7 +20,7 @@
         return directive;
     }
 
-    function controller(confirmSummonerModalService, accountService) {
+    function controller(verifySummonerModalService, accountService) {
 
         var vm = this;
 
@@ -45,8 +45,8 @@
                 return;
             }
 
-            accountService.addSummoner(1, { name: vm.summonerName, region: vm.summonerRegion }).then(function(confirmSummoner) {
-                confirmSummonerModalService.open(confirmSummoner).then(function (summoner) {
+            accountService.addSummoner(1, { name: vm.summonerName, region: vm.summonerRegion }).then(function(verifySummoner) {
+                verifySummonerModalService.open(verifySummoner).then(function (summoner) {
                     vm.summoners.push(summoner);
 
                     vm.summonerName = "";

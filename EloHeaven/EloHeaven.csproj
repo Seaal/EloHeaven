@@ -266,7 +266,7 @@
     <Content Include="App\Account\account.controller.js" />
     <Content Include="App\Account\account.service.js" />
     <Content Include="App\Account\account.view.html" />
-    <Content Include="App\Account\Summoners\confirmSummonerModal.service.js" />
+    <Content Include="App\Account\Summoners\verifySummonerModal.service.js" />
     <Content Include="App\Account\Summoners\leagueAccounts.directive.js" />
     <Content Include="App\Account\Summoners\leagueAccounts.template.html" />
     <Content Include="App\Core\core.module.js" />
@@ -298,8 +298,8 @@
     <Content Include="App\Mentors\Application\confirmation\confirmation.view.html" />
     <Content Include="App\Mentors\Application\summoners\addSummoners.controller.js" />
     <Content Include="App\Mentors\Application\summoners\addSummoners.view.html" />
-    <Content Include="App\Account\Summoners\confirmSummoner.controller.js" />
-    <Content Include="App\Account\Summoners\confirmSummoner.html" />
+    <Content Include="App\Account\Summoners\verifySummoner.controller.js" />
+    <Content Include="App\Account\Summoners\verifySummoner.html" />
     <Content Include="App\Mentors\Application\terms\terms.controller.js" />
     <Content Include="App\Mentors\Application\terms\terms.view.html" />
     <Content Include="App\Mentors\championList.directive.js" />

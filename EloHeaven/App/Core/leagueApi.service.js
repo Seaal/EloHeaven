@@ -5,13 +5,13 @@
 		
 	function leagueApiService() {
 		return {
-			confirmSummoner: confirmSummoner,
+			verifySummoner: verifySummoner,
 			getChampions: getChampions,
 			getSummoner: getSummoner,
 			getRegions : getRegions	
 		};
 		
-		function confirmSummoner(summoner, code) {
+		function verifySummoner(summoner, code) {
 			return true;
 		}
 		

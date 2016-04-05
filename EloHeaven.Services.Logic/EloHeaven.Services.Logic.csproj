@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account\Summoners\ISummonerService.cs" />
-    <Compile Include="Account\Summoners\SummonerConfirmationModel.cs" />
+    <Compile Include="Account\Summoners\SummonerVerificationModel.cs" />
     <Compile Include="Account\Summoners\SummonerModel.cs" />
     <Compile Include="Account\Summoners\SummonerModelMapper.cs" />
     <Compile Include="Account\Summoners\SummonerService.cs" />

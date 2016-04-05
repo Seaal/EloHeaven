@@ -40,7 +40,7 @@ namespace EloHeaven.Logic.LeagueApi
         {
             RunepagesDTO runepagesDto = _leagueRequestService.GetRunepages(summoner.Region.LeagueApiId, summoner.LeagueApiId);
 
-            return runepagesDto.Pages.Any(rp => rp.Name == summoner.ConfirmationCode);
+            return runepagesDto.Pages.Any(rp => rp.Name == summoner.VerificationCode);
         }
 
         private void SetRankingInformation(string region, LeagueSummoner summoner, SummonerDTO summonerDto)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EloHeaven.Services.Logic.Account.Summoners
 {
-    public class SummonerConfirmationModel
+    public class SummonerVerificationModel
     {
         public string Code { get; set; }
         public SummonerModel Summoner { get; set; }

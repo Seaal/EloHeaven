@@ -15,8 +15,8 @@ namespace EloHeaven.Data
 
             return new[]
             {
-                new Summoner() { Id = 1, LeagueApiId = 197348, Name = "Seaal", Region = na, RegionId = 1, UserId = 1, IsConfirmed = false, ConfirmationCode = "Jungle" },
-                new Summoner() { Id = 2, LeagueApiId = 19311231, Name = "IcanhasSmurf", Region = na, RegionId = 1, UserId = 1, IsConfirmed = false },
+                new Summoner() { Id = 1, LeagueApiId = 197348, Name = "Seaal", Region = na, RegionId = 1, UserId = 1, IsVerified = false, VerificationCode = "Jungle" },
+                new Summoner() { Id = 2, LeagueApiId = 19311231, Name = "IcanhasSmurf", Region = na, RegionId = 1, UserId = 1, IsVerified = false },
             };
         }
 
