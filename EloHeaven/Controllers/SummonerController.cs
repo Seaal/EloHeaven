@@ -28,6 +28,14 @@ namespace EloHeaven.Controllers
             return _summonerService.Add(userId, summonerModel);
         }
 
+
+        [Route("{summonerId}/confirmation")]
+        [HttpGet]
+        public SummonerConfirmationModel GetConfirmation(int userId, int summonerId)
+        {
+            return _summonerService.GetConfirmation(userId, summonerId);
+        }
+
         [Route("{summonerId}/confirmation")]
         [HttpPost]
         public void Confirm(int userId, int summonerId)

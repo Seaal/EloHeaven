@@ -20,7 +20,8 @@ namespace EloHeaven.Services.Logic.Account.Summoners
             {
                 Id = entity.Id,
                 Name = entity.Name,
-                Region = entity.Region.LeagueApiId
+                Region = entity.Region.LeagueApiId,
+                IsVerified = entity.IsConfirmed
             };
         }
     }

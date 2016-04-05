@@ -95,5 +95,27 @@ namespace EloHeaven.Services.Logic.Account.Summoners
 
             _summonerRepository.Delete(summoner);
         }
+
+        public SummonerConfirmationModel GetConfirmation(int userId, int summonerId)
+        {
+            Summoner summoner = _summonerRepository.Get(summonerId);
+
+            if (summoner.IsConfirmed)
+            {
+                throw new BadRequestException("This League of Legends account has already been confirmed.");
+            }
+
+            string confirmationCode = _secureTokenGenerator.GenerateToken(_confirmationTokenLength);
+
+            summoner.ConfirmationCode = confirmationCode;
+
+            _summonerRepository.Update(summoner);
+
+            return new SummonerConfirmationModel()
+            {
+                Code = confirmationCode,
+                Summoner = _summonerModelMapper.ToModel(summoner)
+            };
+        }
     }
 }

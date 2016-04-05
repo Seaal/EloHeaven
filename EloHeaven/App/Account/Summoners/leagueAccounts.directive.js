@@ -20,7 +20,7 @@
         return directive;
     }
 
-    function controller($uibModal, accountService) {
+    function controller(confirmSummonerModalService, accountService) {
 
         var vm = this;
 
@@ -46,19 +46,7 @@
             }
 
             accountService.addSummoner(1, { name: vm.summonerName, region: vm.summonerRegion }).then(function(confirmSummoner) {
-                var confirmModal = $uibModal.open({
-                    templateUrl: "App/Account/Summoners/confirmSummoner.html",
-                    controller: "confirmSummonerController",
-                    controllerAs: "vm",
-                    backdrop: "static",
-                    resolve: {
-                        confirmSummoner: function () {
-                            return confirmSummoner;
-                        }
-                    }
-                });
-
-                confirmModal.result.then(function (summoner) {
+                confirmSummonerModalService.open(confirmSummoner).then(function (summoner) {
                     vm.summoners.push(summoner);
 
                     vm.summonerName = "";

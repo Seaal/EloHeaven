@@ -8,11 +8,11 @@
                     <p>{{summoner.region}}</p>
                 </div>
                 <div class="information information-right">
-                    <div class="verified">
+                    <div class="verified" ng-show="summoner.isVerified">
                         <strong>Verified</strong> <i class="fa fa-check"></i>
                     </div>
-                    <div class="unverified" style="display: none">
-                        <button class="btn btn-primary btn-block btn-xs">Verify <i class="fa fa-check"></i></button>
+                    <div class="unverified" ng-hide="summoner.isVerified">
+                        <button class="btn btn-primary btn-block btn-xs" ng-click="vm.confirmSummoner(summoner)">Verify <i class="fa fa-check"></i></button>
                     </div>
                     <div class="summoner-remove">
                         <button class="btn btn-danger btn-block btn-xs">Remove <i class="fa fa-remove"></i></button>

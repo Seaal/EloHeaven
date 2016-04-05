@@ -13,5 +13,6 @@ namespace EloHeaven.Services.Logic.Account.Summoners
         SummonerConfirmationModel Add(int userId, SummonerModel summonerModel);
         void Confirm(int userId, int summonerId);
         void Delete(int userId, int summonerId);
+        SummonerConfirmationModel GetConfirmation(int userId, int summonerId);
     }
 }

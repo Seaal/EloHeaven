@@ -16,6 +16,9 @@
 		    vm.error = "";
 
 		    accountService.confirmSummoner(1, confirmSummoner.summoner.id).then(function () {
+
+		        confirmSummoner.summoner.isVerified = true;
+
 		        $scope.$close(confirmSummoner.summoner);
 		    }, function(response) {
 		        vm.error = response.data.message;
