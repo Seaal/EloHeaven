@@ -8,6 +8,7 @@
 		var vm = this;
 		
 		vm.summoner = verifySummonerModel.summoner;
+	    vm.cancel = cancel;
 		vm.code = verifySummonerModel.code;
 		vm.verify = verify;
 	    vm.verifyLater = verifyLater;
@@ -28,6 +29,12 @@
 
         function verifyLater() {
             $scope.$close(vm.summoner);
+        }
+        
+        function cancel() {
+            accountService.removeSummoner(1, vm.summoner.id).then(function() {
+                $scope.$dismiss();
+            });
         }
 	}
 	

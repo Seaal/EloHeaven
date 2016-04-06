@@ -1,0 +1,22 @@
+﻿<div class="modal-header">
+</div>
+
+<div class="modal-body">
+    <p>
+        Are you sure you wish to remove this League of Legends account.
+    </p>
+
+    <p><strong>Name:</strong> {{vm.summoner.name}}
+    </p>
+    <p><strong>Region:</strong> {{vm.summoner.region}}
+    </p>
+
+    <div class="alert alert-danger" ng-show="vm.error">
+        <b>Error:</b> {{vm.error}}
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary pull-left" ng-click="$dismiss()">Cancel</button>
+    <button class="btn btn-danger" ng-click="vm.remove()">Remove</button>
+</div>
