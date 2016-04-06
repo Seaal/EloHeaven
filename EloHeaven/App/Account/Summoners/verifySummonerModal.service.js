@@ -13,7 +13,7 @@
 
         function open(verifySummonerModel) {
             var verifyModal = $uibModal.open({
-                templateUrl: "App/Account/Summoners/verifySummoner.html",
+                templateUrl: "App/Account/Summoners/verifySummoner.view.html",
                 controller: "verifySummonerController",
                 controllerAs: "vm",
                 backdrop: "static",
