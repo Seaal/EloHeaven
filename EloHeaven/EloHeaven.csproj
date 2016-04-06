@@ -273,6 +273,7 @@
     <Content Include="App\Core\leagueApi.service.js" />
     <Content Include="App\Core\leaguePicture.directive.js" />
     <Content Include="App\Core\leaguePicture.html" />
+    <Content Include="App\Shared\request.service.js" />
     <Content Include="App\Core\summonerList.directive.js" />
     <Content Include="App\Core\summonerList.html" />
     <Content Include="App\eloHeaven.module.js" />

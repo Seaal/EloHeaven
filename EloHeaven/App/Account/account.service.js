@@ -4,36 +4,43 @@
         .module("eloHeaven")
         .factory("accountService", accountService);
 
-    function accountService($http) {
+    accountService.$inject = ["requestService"];
+
+    function accountService(requestService) {
         var service = {
             getSummoners: getSummoners,
             addSummoner: addSummoner,
             verifySummoner: verifySummoner,
-            getSummonerVerification: getSummonerVerification
-    };
+            getSummonerVerification: getSummonerVerification,
+            removeSummoner: removeSummoner
+        };
 
         return service;
 
         function getSummoners(userId) {
-            return $http.get("/api/account/" + userId + "/summoner").then(function(response) {
-                return response.data;
-            });
+            return requestService.get(getSummonerUrl(userId));
         }
 
         function addSummoner(userId, summoner) {
-            return $http.post("/api/account/" + userId + "/summoner", summoner).then(function(response) {
-                return response.data;
-            });
+            return requestService.post(getSummonerUrl(userId), summoner);
         }
 
         function verifySummoner(userId, summonerId) {
-            return $http.post("/api/account/" + userId + "/summoner/" + summonerId + "/verification");
+            return requestService.post(getSummonerUrl(userId, summonerId) + "/verification");
         }
 
         function getSummonerVerification(userId, summonerId) {
-            return $http.get("/api/account/" + userId + "/summoner/" + summonerId + "/verification").then(function(response) {
-                return response.data;
-            });
+            return requestService.get(getSummonerUrl(userId, summonerId) + "/verification");
+        }
+
+        function removeSummoner(userId, summonerId) {
+            return requestService.delete(getSummonerUrl(userId, summonerId));
+        }
+
+        function getSummonerUrl(userId, summonerId) {
+            var url = "account/" + userId + "/summoner";
+
+            return summonerId === undefined ? url : url + "/" + summonerId;
         }
     }
 
