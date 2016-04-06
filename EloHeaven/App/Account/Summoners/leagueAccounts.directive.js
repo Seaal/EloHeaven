@@ -26,7 +26,7 @@
 
         vm.addSummoner = addSummoner;
         vm.summonerName = "";
-        vm.summonerRegion = vm.regions[0].id;
+        vm.summonerRegion = vm.regions[0];
         vm.errors = [];
 
         function addSummoner(name, region) {

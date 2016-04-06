@@ -13,7 +13,7 @@
         <label for="region" class="col-md-2 control-label">Region</label>
 
         <div class="col-md-4">
-            <select class="form-control" id="region" ng-options="region.id as region.name for region in accounts.regions" ng-model="accounts.summonerRegion"></select>
+            <select class="form-control" id="region" ng-options="region as region.name for region in accounts.regions" ng-model="accounts.summonerRegion"></select>
         </div>
     </div>
 

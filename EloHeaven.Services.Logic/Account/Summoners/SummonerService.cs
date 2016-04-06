@@ -37,14 +37,14 @@ namespace EloHeaven.Services.Logic.Account.Summoners
 
         public SummonerVerificationModel Add(int userId, SummonerModel summonerModel)
         {
-            Summoner existingSummoner = _summonerRepository.Get(summonerModel.Name, summonerModel.Region);
+            Summoner existingSummoner = _summonerRepository.Get(summonerModel.Name, summonerModel.Region.Id);
 
             if (existingSummoner.IsVerified)
             {
                 throw new BadRequestException("This League of Legends account has already been verified by somebody else.");
             }
 
-            LeagueSummoner leagueSummoner = _apiService.GetSummoner(summonerModel.Region, summonerModel.Name);
+            LeagueSummoner leagueSummoner = _apiService.GetSummoner(summonerModel.Region.Id, summonerModel.Name);
 
             string verificationCode = _secureTokenGenerator.GenerateToken(_verificationTokenLength);
 
@@ -53,7 +53,7 @@ namespace EloHeaven.Services.Logic.Account.Summoners
                 LeagueApiId = leagueSummoner.Id,
                 Name = leagueSummoner.Name,
                 UserId = userId,
-                Region = _regionRepository.GetFromLeagueId(summonerModel.Region),
+                Region = _regionRepository.GetFromLeagueId(summonerModel.Region.Id),
                 VerificationCode = verificationCode,
                 IsVerified = false
             };

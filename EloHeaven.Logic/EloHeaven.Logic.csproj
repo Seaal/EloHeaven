@@ -74,6 +74,7 @@
     <Compile Include="MentoredInhouses\PlayerModel.cs" />
     <Compile Include="MentoredInhouses\SwapsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionModel.cs" />
     <Compile Include="SecureTokenGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

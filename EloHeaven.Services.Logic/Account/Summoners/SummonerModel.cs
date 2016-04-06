@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EloHeaven.Logic;
+using EloHeaven.Services.Logic.Regions;
 
 namespace EloHeaven.Services.Logic.Account.Summoners
 {
@@ -10,7 +12,7 @@ namespace EloHeaven.Services.Logic.Account.Summoners
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Region { get; set; }
+        public RegionModel Region { get; set; }
         public bool IsVerified { get; set; }
     }
 }

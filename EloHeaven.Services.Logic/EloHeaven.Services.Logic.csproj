@@ -52,7 +52,7 @@
     <Compile Include="Inhouses\InhouseService.cs" />
     <Compile Include="Regions\IRegionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Regions\RegionModel.cs" />
+    <Compile Include="Regions\RegionModelMapper.cs" />
     <Compile Include="Regions\RegionService.cs" />
   </ItemGroup>
   <ItemGroup>

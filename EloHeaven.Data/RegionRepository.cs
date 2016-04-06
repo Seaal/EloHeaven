@@ -21,7 +21,7 @@ namespace EloHeaven.Data
 
         public Region GetFromLeagueId(string regionId)
         {
-            return new Region() {Id = 1, LeagueApiId = "na", LongName = "North America"};
+            return GetAll().First(r => r.LeagueApiId == regionId);
         }
     }
 }

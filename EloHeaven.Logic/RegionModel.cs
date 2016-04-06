@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EloHeaven.Services.Logic.Regions
+namespace EloHeaven.Logic
 {
     public class RegionModel
     {
