@@ -31,6 +31,7 @@ namespace EloHeaven
 
             config.Filters.Add(new NotFoundFilterAttribute());
             config.Filters.Add(new ServiceUnavailableFilterAttribute());
+            config.Filters.Add(new BadRequestFilterAttribute());
         }
     }
 }

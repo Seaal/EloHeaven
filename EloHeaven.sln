@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Services.Logic", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Tests", "EloHeaven.Tests\EloHeaven.Tests.csproj", "{9A72C84B-9682-4198-A65D-A0B875D20C8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Data", "EloHeaven.Data\EloHeaven.Data.csproj", "{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EloHeaven.Entities", "EloHeaven.Entities\EloHeaven.Entities.csproj", "{2B5A6873-E394-4C03-917D-8629EBCBC6D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{9A72C84B-9682-4198-A65D-A0B875D20C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A72C84B-9682-4198-A65D-A0B875D20C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A72C84B-9682-4198-A65D-A0B875D20C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B5A6873-E394-4C03-917D-8629EBCBC6D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5A6873-E394-4C03-917D-8629EBCBC6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5A6873-E394-4C03-917D-8629EBCBC6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5A6873-E394-4C03-917D-8629EBCBC6D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

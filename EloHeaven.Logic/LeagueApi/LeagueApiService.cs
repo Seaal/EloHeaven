@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EloHeaven.Entities;
 using EloHeaven.Infrastructure.Extensions;
 using EloHeaven.Logic.LeagueApi.DTOs;
 
@@ -19,9 +20,9 @@ namespace EloHeaven.Logic.LeagueApi
             _leagueRequestService = leagueRequestService;
         }
 
-        public LeagueSummoner GetSummoner(string summonerName)
+        public LeagueSummoner GetSummoner(string region, string summonerName)
         {
-            SummonerDTO summonerDto = _leagueRequestService.GetSummoner(summonerName);
+            SummonerDTO summonerDto = _leagueRequestService.GetSummoner(region ,summonerName);
 
             LeagueSummoner summoner = new LeagueSummoner()
             {
@@ -30,14 +31,21 @@ namespace EloHeaven.Logic.LeagueApi
                 Level = summonerDto.SummonerLevel
             };
 
-            SetRankingInformation(summoner, summonerDto);
+            SetRankingInformation(region, summoner, summonerDto);
 
             return summoner;
         }
 
-        private void SetRankingInformation(LeagueSummoner summoner, SummonerDTO summonerDto)
+        public bool ConfirmSummoner(Summoner summoner)
         {
-            ICollection<LeagueDTO> leagueDtos = _leagueRequestService.GetLeagues(summonerDto.Id);
+            RunepagesDTO runepagesDto = _leagueRequestService.GetRunepages(summoner.Region.LeagueApiId, summoner.LeagueApiId);
+
+            return runepagesDto.Pages.Any(rp => rp.Name == summoner.VerificationCode);
+        }
+
+        private void SetRankingInformation(string region, LeagueSummoner summoner, SummonerDTO summonerDto)
+        {
+            IEnumerable<LeagueDTO> leagueDtos = _leagueRequestService.GetLeagues(region, summonerDto.Id);
 
             if (leagueDtos == null)
             {

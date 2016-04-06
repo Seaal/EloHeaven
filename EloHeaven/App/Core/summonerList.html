@@ -1,6 +1,25 @@
 <ul class="summoner-list">
-	<li ng-repeat="summoner in vm.summoners">
-		<eh-league-picture summoner="summoner" alt="{{summoner.name}}" size="small"></eh-league-picture>
-		<span><strong>{{summoner.name}}</strong> - {{summoner.rank}}</span>
-	</li>
+    <li ng-repeat="summoner in vm.summoners">
+        <div class="panel card summoner-card">
+            <div class="panel-body">
+                <eh-league-picture summoner="summoner" alt="{{summoner.name}}" size="small"></eh-league-picture>
+                <div class="information summoner-information">
+                    <h3>{{summoner.name}}</h3>
+                    <p>{{summoner.region.name}}</p>
+                </div>
+                <div class="information information-right">
+                    <div class="verified" ng-show="summoner.isVerified">
+                        <strong>Verified</strong> <i class="fa fa-check"></i>
+                    </div>
+                    <div class="unverified" ng-hide="summoner.isVerified">
+                        <button class="btn btn-primary btn-block btn-xs" ng-click="vm.verifySummoner(summoner)">Verify <i class="fa fa-check"></i></button>
+                    </div>
+                    <div class="summoner-remove">
+                        <button class="btn btn-danger btn-block btn-xs" ng-click="vm.remove(summoner)">Remove <i class="fa fa-remove"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </li>
 </ul>

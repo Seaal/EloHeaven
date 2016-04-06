@@ -248,6 +248,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InhouseController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RegionController.cs" />
+    <Compile Include="Controllers\SummonerController.cs" />
+    <Compile Include="Filters\BadRequestFilterAttribute.cs" />
     <Compile Include="Filters\NotFoundFilterAttribute.cs" />
     <Compile Include="Filters\ServiceUnavailableFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -260,10 +263,20 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Account\account.controller.js" />
+    <Content Include="App\Account\account.service.js" />
+    <Content Include="App\Account\account.view.html" />
+    <Content Include="App\Account\Summoners\removeSummoner.controller.js" />
+    <Content Include="App\Account\Summoners\removeSummoner.view.html" />
+    <Content Include="App\Account\Summoners\removeSummonerModal.service.js" />
+    <Content Include="App\Account\Summoners\verifySummonerModal.service.js" />
+    <Content Include="App\Account\Summoners\leagueAccounts.directive.js" />
+    <Content Include="App\Account\Summoners\leagueAccounts.template.html" />
     <Content Include="App\Core\core.module.js" />
     <Content Include="App\Core\leagueApi.service.js" />
     <Content Include="App\Core\leaguePicture.directive.js" />
     <Content Include="App\Core\leaguePicture.html" />
+    <Content Include="App\Shared\request.service.js" />
     <Content Include="App\Core\summonerList.directive.js" />
     <Content Include="App\Core\summonerList.html" />
     <Content Include="App\eloHeaven.module.js" />
@@ -289,8 +302,8 @@
     <Content Include="App\Mentors\Application\confirmation\confirmation.view.html" />
     <Content Include="App\Mentors\Application\summoners\addSummoners.controller.js" />
     <Content Include="App\Mentors\Application\summoners\addSummoners.view.html" />
-    <Content Include="App\Mentors\Application\summoners\confirmSummoner.controller.js" />
-    <Content Include="App\Mentors\Application\summoners\confirmSummoner.html" />
+    <Content Include="App\Account\Summoners\verifySummoner.controller.js" />
+    <Content Include="App\Account\Summoners\verifySummoner.view.html" />
     <Content Include="App\Mentors\Application\terms\terms.controller.js" />
     <Content Include="App\Mentors\Application\terms\terms.view.html" />
     <Content Include="App\Mentors\championList.directive.js" />
@@ -306,6 +319,7 @@
     <Content Include="App\notificationsList.html" />
     <Content Include="App\profilePicture.directive.js" />
     <Content Include="App\profilePicture.html" />
+    <Content Include="App\region.service.js" />
     <Content Include="App\Shared\seaal.constants.js" />
     <Content Include="App\Shared\seaal.module.js" />
     <Content Include="App\Shared\selectall.directive.js" />
@@ -378,6 +392,8 @@
     <Content Include="images\shaco-48.jpg" />
     <Content Include="images\swain-48.jpg" />
     <Content Include="images\unknown-summoner.png" />
+    <Content Include="Scripts\ui-bootstrap-modal-tpls-1.2.5.js" />
+    <Content Include="Scripts\ui-bootstrap-modal-tpls-1.2.5.min.js" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1176,7 +1192,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\selectize.js" />
-    <Content Include="Scripts\ui-bootstrap-modal-tpls-0.13.0.js" />
     <Content Include="Scripts\ui-sortable.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
@@ -1232,6 +1247,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EloHeaven.Data\EloHeaven.Data.csproj">
+      <Project>{994BCEDB-33BB-4035-B34B-9D5AECDA9BA9}</Project>
+      <Name>EloHeaven.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EloHeaven.Infrastructure\EloHeaven.Infrastructure.csproj">
       <Project>{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}</Project>
       <Name>EloHeaven.Infrastructure</Name>
@@ -1244,9 +1263,6 @@
       <Project>{3B8C4A4E-C212-4AD6-8FBD-9A23576A086A}</Project>
       <Name>EloHeaven.Services.Logic</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="typings\angularjs\angular.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

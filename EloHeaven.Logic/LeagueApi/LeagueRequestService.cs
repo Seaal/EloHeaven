@@ -18,18 +18,18 @@ namespace EloHeaven.Logic.LeagueApi
     {
         private readonly IJsonClient _jsonClient;
 
-        private readonly string _riotApi = "https://na.api.pvp.net/api/lol/na/";
+        private readonly string _riotApi = ".api.pvp.net/api/lol/";
 
         public LeagueRequestService(IJsonClient jsonClient)
         {
             _jsonClient = jsonClient;
         }
 
-        public SummonerDTO GetSummoner(string summonerName)
+        public SummonerDTO GetSummoner(string region, string summonerName)
         {
-            string resource = GetLeagueResourceUri("v1.4/summoner/by-name/" + summonerName);
+            string resource = GetLeagueResourceUri(region, "v1.4/summoner/by-name/" + summonerName);
 
-            SummonerDTO summonerDto = Get(resource, () => GetSummoner(summonerName));
+            SummonerDTO summonerDto = Get(resource, () => GetSummoner(region, summonerName));
 
             if (summonerDto == null)
             {
@@ -39,17 +39,24 @@ namespace EloHeaven.Logic.LeagueApi
             return summonerDto;
         }
 
-        public ICollection<LeagueDTO> GetLeagues(long summonerId)
+        public IEnumerable<LeagueDTO> GetLeagues(string region, long summonerId)
         {
-            string resource = GetLeagueResourceUri("v2.5/league/by-summoner/" + summonerId + "/entry");
+            string resource = GetLeagueResourceUri(region, "v2.5/league/by-summoner/" + summonerId + "/entry");
 
-            return Get(resource, () => GetLeagues(summonerId));
+            return Get(resource, () => GetLeagues(region, summonerId));
         }
 
-        private string GetLeagueResourceUri(string resource)
+        public RunepagesDTO GetRunepages(string region, long summonerId)
         {
-            string apiKeyDeliminater = resource.Contains('?') ? "&api_key=" : "?api_key=";
-            return _riotApi + resource + apiKeyDeliminater + CloudConfigurationManager.GetSetting("RiotApiKey");
+            string resource = GetLeagueResourceUri(region, "v1.4/summoner/" + summonerId + "/runes");
+
+            return Get(resource, () => GetRunepages(region, summonerId));
+        }
+
+        private string GetLeagueResourceUri(string region, string resource)
+        {
+            string apiKeyDelimiter = resource.Contains('?') ? "&api_key=" : "?api_key=";
+            return "https://" + region.ToLowerInvariant() + _riotApi + region.ToLowerInvariant() + "/" + resource + apiKeyDelimiter + CloudConfigurationManager.GetSetting("RiotApiKey");
         }
 
         private T Get<T>(string resource, Func<T> retryFunc)

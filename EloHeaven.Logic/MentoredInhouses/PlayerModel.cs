@@ -7,7 +7,7 @@
         public int Level { get; set; }
         public string Rank { get; set; }
         public int Rating { get; set; }
-        public string Region { get; set; }
+        public RegionModel Region { get; set; }
         public string Status { get; set; }
     }
 }

@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISecureTokenGenerator.cs" />
+    <Compile Include="LeagueApi\DTOs\RunepageDTO.cs" />
+    <Compile Include="LeagueApi\DTOs\RunepagesDTO.cs" />
     <Compile Include="MentoredInhouses\BalancingService.cs" />
     <Compile Include="MentoredInhouses\BalancingStrategyFactory.cs" />
     <Compile Include="MentoredInhouses\BruteForceBalancingStrategy.cs" />
@@ -71,8 +74,14 @@
     <Compile Include="MentoredInhouses\PlayerModel.cs" />
     <Compile Include="MentoredInhouses\SwapsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionModel.cs" />
+    <Compile Include="SecureTokenGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EloHeaven.Entities\EloHeaven.Entities.csproj">
+      <Project>{2B5A6873-E394-4C03-917D-8629EBCBC6D0}</Project>
+      <Name>EloHeaven.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EloHeaven.Infrastructure\EloHeaven.Infrastructure.csproj">
       <Project>{9FE4170F-BA58-4CD3-9BCF-05F11A439F28}</Project>
       <Name>EloHeaven.Infrastructure</Name>

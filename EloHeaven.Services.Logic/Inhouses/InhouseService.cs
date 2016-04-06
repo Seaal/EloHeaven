@@ -1,4 +1,5 @@
-﻿using EloHeaven.Logic.LeagueApi;
+﻿using EloHeaven.Logic;
+using EloHeaven.Logic.LeagueApi;
 using EloHeaven.Logic.MentoredInhouses;
 
 namespace EloHeaven.Services.Logic.Inhouses
@@ -21,7 +22,7 @@ namespace EloHeaven.Services.Logic.Inhouses
 
         public PlayerModel GetPlayer(string playerName)
         {
-            LeagueSummoner summoner = _leagueApiService.GetSummoner(playerName);
+            LeagueSummoner summoner = _leagueApiService.GetSummoner("na", playerName);
 
             return new PlayerModel()
             {
@@ -30,7 +31,7 @@ namespace EloHeaven.Services.Logic.Inhouses
                 Level = summoner.Level,
                 Rank = summoner.Tier + " " + summoner.Division,
                 Rating = _balancingService.GetRating(summoner),
-                Region = "NA",
+                Region = new RegionModel { Id = "NA", Name = "North America"},
                 Status = "confirmed"
             };
         }
