@@ -1,12 +1,12 @@
 ﻿(function () {
     angular
-        .module("eloHeaven")
+        .module("eloHeaven.core")
         .directive("ehNotificationsList", notificationsList);
 
     function notificationsList() {
         return {
             restrict: 'E',
-            templateUrl: 'App/notificationsList.html',
+            templateUrl: 'App/Core/Notifications/notificationsList.template.html',
             scope: {
                 user: "="
             },

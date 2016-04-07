@@ -11,7 +11,7 @@
                     readOnly: "="
                 },
                 bindToController: true,
-                templateUrl: 'App/Shared/starRating.html',
+                templateUrl: 'App/Shared/starRating.template.html',
                 controllerAs: 'vm',
                 controller: function ($scope, starRatingService) {
 

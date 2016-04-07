@@ -1,7 +1,7 @@
 ﻿(function() {
 
     angular
-        .module("eloHeaven")
+        .module("eloHeaven.core")
         .factory("regionService", regionService);
 
     function regionService($http) {

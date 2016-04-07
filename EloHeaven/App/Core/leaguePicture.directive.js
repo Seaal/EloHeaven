@@ -8,7 +8,7 @@
     function leaguePicture() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'App/Core/leaguePicture.html',
+            templateUrl: 'App/Core/leaguePicture.template.html',
             scope: {
                 size: '@',
                 summoner: '=',

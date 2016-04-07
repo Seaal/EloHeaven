@@ -2,14 +2,14 @@
     'use strict';
 
     angular
-        .module("eloHeaven")
+        .module("eloHeaven.core")
         .directive("ehMentorCard", function () {
             var directive = {
                 restrict: 'E',
                 scope: {
                     mentor: '='
                 },
-                templateUrl: 'App/mentorCard.html'
+                templateUrl: 'App/Core/mentorCard.template.html'
             };
 
             return directive;

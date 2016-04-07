@@ -9,7 +9,7 @@
                 scope: {
                     summoners: '='
                 },
-                templateUrl: 'App/Core/summonerList.html',
+                templateUrl: 'App/Core/summonerList.template.html',
                 controllerAs: 'vm',
                 bindToController: true,
                 controller: controller

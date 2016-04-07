@@ -1,6 +1,6 @@
 ﻿(function () {
     angular
-        .module("eloHeaven")
+        .module("eloHeaven.core")
         .factory("notificationsService", notificationsService);
 
     function notificationsService() {

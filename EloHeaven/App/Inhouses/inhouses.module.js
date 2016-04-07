@@ -1,6 +1,8 @@
 (function() {
     
     angular
-        .module("eloHeaven.inhouses", []);
+        .module("eloHeaven.inhouses", [
+            "eloHeaven.core"
+        ]);
     
 })();

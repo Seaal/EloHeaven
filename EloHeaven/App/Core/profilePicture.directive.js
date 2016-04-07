@@ -1,15 +1,14 @@
-﻿/// <reference path="../typings/angularjs/angular.d.ts"/>
-(function () {
+﻿(function () {
     'use strict';
 
     angular
-        .module("eloHeaven")
+        .module("eloHeaven.core")
         .directive("ehProfilePicture", profilePicture);
 
     function profilePicture() {
         var directive = {
             restrict: 'E',
-            templateUrl: 'App/profilePicture.html',
+            templateUrl: 'App/Core/profilePicture.template.html',
             scope: {
                 size: '@',
                 user: '='

@@ -1,7 +1,7 @@
 (function() {
     
     angular
-        .module("eloHeaven")
+        .module("eloHeaven.inhouses")
         .controller("inhouseController", InhouseController);
         
     function InhouseController($scope, inhouseService) {
